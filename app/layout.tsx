@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Francisco Kirhman — Projects',
+  title: 'Francisco Kirhman | Medical Affairs and Scientific Portfolio',
   description:
-    "A selection of public coding projects by Francisco Kirhman, spanning scientific tools, automation, and interactive web experiences.",
+    'Scientific portfolio of Francisco Kirhman: cancer genomics research, medical education coordination, clinical research documentation, and evidence tools for Medical Affairs.',
 };
 
 export default function RootLayout({
