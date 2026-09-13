@@ -209,6 +209,10 @@ export default function Home() {
               <p className="mb-5 font-mono text-xs font-bold uppercase tracking-[.2em] text-[#b8f28b]">Scientific portfolio | Chile</p>
               <h1 className="max-w-4xl text-5xl font-semibold leading-[.94] tracking-[-.065em] text-white sm:text-7xl lg:text-8xl">Medical science starts with evidence.</h1>
               <p className="mt-8 max-w-2xl text-lg leading-8 text-[#b8c9c4]">Molecular Biotechnology Engineer building toward Medical Science Liaison and Medical Affairs work through cancer genomics research, clinical research experience, HCP education coordination, and evidence led tools.</p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a href="/Francisco_Kirhman_MSL_CV.pdf" download className="inline-flex items-center gap-2 rounded-lg bg-[#b8f28b] px-4 py-3 text-sm font-bold text-[#071920] transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#b8f28b]">Download MSL CV <ArrowUpRight aria-hidden="true" className="h-4 w-4" /></a>
+                <a href="mailto:francisco.osorio@ug.uchile.cl" className="inline-flex items-center gap-2 rounded-lg border border-white/15 px-4 py-3 text-sm font-bold text-white transition hover:border-[#b8f28b] hover:text-[#b8f28b] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#b8f28b]">Email Francisco <ArrowUpRight aria-hidden="true" className="h-4 w-4" /></a>
+              </div>
             </div>
             <aside className="self-end rounded-2xl border border-[#b8f28b]/25 bg-[#0b252c]/80 p-6">
               <p className="font-mono text-xs uppercase tracking-[.16em] text-[#b8f28b]">Scientific foundation</p>
@@ -285,8 +289,9 @@ export default function Home() {
         </main>
 
         <footer id="connect" className="mt-16 flex flex-col gap-5 border-t border-white/10 pt-7 font-mono text-xs text-[#7fa29b] sm:flex-row sm:items-center sm:justify-between">
-          <p>Scientific portfolio | Santiago, Chile | Updated September 2026</p>
+          <div><p>Scientific portfolio | Santiago, Chile | Updated September 2026</p><a href="mailto:francisco.osorio@ug.uchile.cl" className="mt-2 inline-block text-[#b8f28b] transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#b8f28b]">francisco.osorio@ug.uchile.cl</a></div>
           <div className="flex flex-wrap gap-x-5 gap-y-2">
+            <a href="/Francisco_Kirhman_MSL_CV.pdf" download className="transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#b8f28b]">MSL CV <span aria-hidden="true">↗</span></a>
             <a href="https://www.linkedin.com/in/franciscokirhman/" target="_blank" rel="noreferrer" className="transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#b8f28b]">LinkedIn <span aria-hidden="true">↗</span></a>
             <a href="https://www.kaggle.com/franciscokirhman" target="_blank" rel="noreferrer" className="transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#b8f28b]">Kaggle <span aria-hidden="true">↗</span></a>
             <a href="https://public.tableau.com/app/profile/francisco.kirhman.osorio/vizzes" target="_blank" rel="noreferrer" className="transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#b8f28b]">Tableau <span aria-hidden="true">↗</span></a>
