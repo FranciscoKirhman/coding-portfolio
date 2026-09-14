@@ -2,528 +2,635 @@
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%23102a35'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-size='14' fill='%23f3f5f1'%3EFK%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%232143d6'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Georgia,serif' font-size='14' fill='%23ffffff'%3EFK%3C/text%3E%3C/svg%3E">
 <!-- page -->
 <title>Francisco Kirhman Osorio</title>
-<meta name="description" content="Engineer in Molecular Biotechnology with three peer-reviewed articles, dual GCP certification and HCP medical education experience at Johnson & Johnson MedTech. Santiago, Chile.">
+<meta name="description" content="Engineer in Molecular Biotechnology with three peer-reviewed articles, dual GCP certification and medical education experience at Johnson & Johnson MedTech. Santiago, Chile.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <style>
+/* One light world on purpose, like a journal page: every color is painted explicitly. */
 :root{
-  --paper:#f3f5f1; --panel:#e4ebe7; --ink:#102a35; --muted:#4d636b; --line:#d2dbd6; --rule:#102a35;
-  --accent:#0b6b67; --on-accent:#ffffff; --dot:#9aaeb1;
-  --band:#102a35; --band-text:#eaf1ef; --band-muted:#a8bfc2; --band-line:#2f4a54; --band-accent:#8fd3c8;
-  --foot:#074b4b; --foot-text:#f0f7f5; --foot-muted:#b6d3d0; --foot-line:#3c7874; --foot-accent:#a3e2d8;
-  --btn:#102a35; --btn-text:#f3f5f1;
-  --frame:rgba(255,255,255,.6); --header:rgba(243,245,241,.92);
+  color-scheme: light;
+  --paper:#ffffff; --ink:#0d1526; --muted:#505b6e; --line:#e2e6ee; --blue:#2143d6; --blue-ink:#1a36b0; --blue-soft:#eef2fe;
   --serif:"Newsreader", Georgia, "Times New Roman", serif;
-  --sans:"IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --sans:"Public Sans", "Helvetica Neue", Arial, sans-serif;
   --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --paper:#0a161b; --panel:#10222a; --ink:#e2ebe8; --muted:#9fb4b7; --line:#213840; --rule:#8fa7ab;
-    --accent:#62c4b8; --on-accent:#04201e; --dot:#47616a;
-    --band:#0f242c; --band-text:#e6eeec; --band-muted:#a2babd; --band-line:#2a4650; --band-accent:#7fcfc3;
-    --foot:#08302f; --foot-text:#eaf4f2; --foot-muted:#a8c9c5; --foot-line:#29605c; --foot-accent:#8fdbd0;
-    --btn:#e2ebe8; --btn-text:#0a161b;
-    --frame:rgba(255,255,255,.35); --header:rgba(10,22,27,.9);
-  }
-}
-:root[data-theme="dark"]{
-  --paper:#0a161b; --panel:#10222a; --ink:#e2ebe8; --muted:#9fb4b7; --line:#213840; --rule:#8fa7ab;
-  --accent:#62c4b8; --on-accent:#04201e; --dot:#47616a;
-  --band:#0f242c; --band-text:#e6eeec; --band-muted:#a2babd; --band-line:#2a4650; --band-accent:#7fcfc3;
-  --foot:#08302f; --foot-text:#eaf4f2; --foot-muted:#a8c9c5; --foot-line:#29605c; --foot-accent:#8fdbd0;
-  --btn:#e2ebe8; --btn-text:#0a161b;
-  --frame:rgba(255,255,255,.35); --header:rgba(10,22,27,.9);
-}
-
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 @media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}
-body{margin:0;background:var(--paper);color:var(--ink);font:400 1rem/1.6 var(--sans);-webkit-font-smoothing:antialiased}
-h1,h2,h3,h4{margin:0;font-weight:400;text-wrap:balance}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1rem/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+h1,h2,h3{margin:0;font-weight:400;text-wrap:balance}
 p{margin:0;text-wrap:pretty}
-a{color:inherit}
+a{color:var(--blue);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:var(--blue-ink)}
 img{max-width:100%;display:block}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-.shell{width:min(1160px, calc(100% - 48px));margin-inline:auto}
-.label{font:600 .75rem/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
-.arr{width:.72em;height:.72em;flex:none}
-.skip{position:absolute;left:16px;top:-80px;z-index:50;background:var(--btn);color:var(--btn-text);padding:.7rem 1rem;font-weight:600}
-.skip:focus{top:12px}
-section[id],footer[id]{scroll-margin-top:72px}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.shell{width:min(1200px, calc(100% - 48px));margin-inline:auto}
+.skip{position:absolute;left:16px;top:-80px;z-index:50;background:var(--ink);color:#fff;padding:.7rem 1rem}
+.skip:focus{top:12px;color:#fff}
+section[id]{scroll-margin-top:24px}
 
-/* Header */
-.site-header{position:sticky;top:0;z-index:20;background:var(--header);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.header-row{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;min-height:68px}
-.brand{display:flex;align-items:center;gap:.75rem;text-decoration:none}
-.monogram{display:grid;place-items:center;width:36px;height:36px;border:1px solid var(--ink);border-radius:50%;font:italic 400 1rem/1 var(--serif)}
-.brand-name{font:600 .75rem/1 var(--sans);letter-spacing:.12em;text-transform:uppercase}
-.site-nav{display:flex;gap:1.75rem;font-size:.875rem;color:var(--muted)}
-.site-nav a{text-decoration:none;padding:.35rem 0;border-bottom:1px solid transparent;transition:color .15s,border-color .15s}
-.site-nav a:hover{color:var(--ink);border-color:var(--accent)}
+/* header */
+.top{border-bottom:1px solid var(--line)}
+.top .shell{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;min-height:64px;flex-wrap:wrap}
+.brand{font:500 1.125rem/1 var(--serif);color:var(--ink);text-decoration:none}
+.nav{display:flex;align-items:center;gap:1.5rem;font-size:.875rem}
+.nav a{color:var(--ink);text-decoration:none}
+.nav a:hover{color:var(--blue)}
+.nav .cv{padding:.45rem .8rem;border:1px solid var(--ink);border-radius:2px}
+.nav .cv:hover{border-color:var(--blue)}
 
-/* Hero */
-.hero{display:grid;grid-template-columns:minmax(0,1.22fr) minmax(0,.78fr);gap:clamp(2.5rem,6vw,5.5rem);align-items:center;padding-block:clamp(3rem,7vw,5.5rem) clamp(3.5rem,7vw,5.5rem)}
-.eyebrow{display:flex;align-items:center;gap:.75rem}
-.eyebrow::before{content:"";width:34px;height:1px;background:var(--accent)}
-.hero h1{margin-top:1.4rem;font:350 clamp(3.1rem,6.4vw,5.6rem)/.94 var(--serif);letter-spacing:-.035em;font-optical-sizing:auto}
-.hero h1 em{font-style:italic;color:var(--accent)}
-.lede{margin-top:1.75rem;max-width:36rem;font-size:1.125rem;line-height:1.7;color:var(--muted)}
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero .shell{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2rem;min-height:600px}
+.hero-copy{position:relative;z-index:2;align-self:center;padding-block:4.5rem}
+.eyebrow{font:500 .8125rem/1.2 var(--mono);color:var(--muted);letter-spacing:.02em}
+.hero h1{margin-top:1.1rem;font:400 clamp(2.9rem,6vw,4.9rem)/1.02 var(--serif);letter-spacing:-.02em;color:var(--blue)}
+.lede{margin-top:1.5rem;max-width:34rem;font-size:1.125rem;line-height:1.7;color:var(--ink)}
 .actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
-.btn{display:inline-flex;align-items:center;gap:.65rem;padding:.9rem 1.2rem;border:1px solid var(--btn);font:600 .875rem/1 var(--sans);text-decoration:none;transition:background-color .15s,color .15s,border-color .15s}
-.btn-primary{background:var(--btn);color:var(--btn-text)}
-.btn-meta{font:400 .75rem/1 var(--mono);opacity:.72}
-.btn:hover{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
-.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem;margin:3rem 0 0;padding-top:1.5rem;border-top:1px solid var(--line)}
-.facts div{display:flex;flex-direction:column-reverse;justify-content:flex-end;gap:.45rem}
-.facts dd{margin:0;font:400 2.5rem/1 var(--serif);color:var(--accent);font-variant-numeric:lining-nums tabular-nums;letter-spacing:-.02em}
-.facts dt{font-size:.8125rem;line-height:1.45;color:var(--muted);max-width:14rem}
-.portrait{margin:0;justify-self:end;width:100%;max-width:420px}
-.portrait-frame{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--panel)}
-.portrait-frame img{width:100%;height:100%;object-fit:cover;filter:saturate(.88)}
-.portrait-frame::after{content:"";position:absolute;inset:16px;border:1px solid var(--frame);pointer-events:none}
-.portrait figcaption{display:flex;justify-content:space-between;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--rule);font:500 .75rem/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.15rem;border-radius:2px;font:600 .9375rem/1 var(--sans);text-decoration:none;border:1px solid var(--blue);transition:background-color .15s,color .15s}
+.btn.solid{background:var(--blue);color:#fff}
+.btn.solid:hover{background:var(--blue-ink);border-color:var(--blue-ink);color:#fff}
+.btn.line{color:var(--blue)}
+.btn.line:hover{background:var(--blue-soft)}
+.helix-wrap{position:relative;z-index:1}
+#helix{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y;cursor:crosshair}
+.lab{position:absolute;right:0;bottom:1.25rem;z-index:3;display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:.5rem 1rem;max-width:100%;font:400 .75rem/1.3 var(--mono);color:var(--muted);background:rgba(255,255,255,.88);padding:.5rem .6rem;border-radius:2px}
+.key{display:flex;gap:.7rem}
+.key span{display:inline-flex;align-items:center;gap:.3rem}
+.key i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.count b{color:#c93a17;font-weight:500;font-variant-numeric:tabular-nums}
+.lab button{font:500 .75rem/1 var(--mono);color:var(--blue);background:#fff;border:1px solid var(--line);border-radius:2px;padding:.4rem .55rem;cursor:pointer}
+.lab button:hover{border-color:var(--blue)}
+.hint{position:absolute;right:0;top:1.25rem;z-index:3;font:400 .75rem/1.3 var(--mono);color:var(--muted)}
 
-/* Profile band */
-.band{background:var(--band);color:var(--band-text);padding-block:clamp(3.5rem,6vw,4.75rem)}
-.band .label{color:var(--band-accent)}
-.band-grid{display:grid;grid-template-columns:8rem minmax(0,1fr) 15rem;gap:clamp(2rem,4.5vw,3.75rem);align-items:start}
-.band h2{font:400 clamp(2rem,3.6vw,3rem)/1.06 var(--serif);letter-spacing:-.025em;max-width:18ch}
-.band-main p{margin-top:1.4rem;max-width:62ch;color:var(--band-muted);line-height:1.75}
-.band-aside{border-left:1px solid var(--band-line);padding-left:1.75rem}
-.band-aside ul{list-style:none;margin:1rem 0 0;padding:0}
-.band-aside li{padding:.6rem 0;border-top:1px solid var(--band-line);font:italic 400 1.0625rem/1.35 var(--serif)}
+/* sections */
+.section{padding-block:clamp(3.5rem,7vw,5.5rem);border-bottom:1px solid var(--line)}
+.sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
+.sec-head h2{font:400 clamp(2rem,3.6vw,2.75rem)/1.1 var(--serif);letter-spacing:-.015em}
+.sec-head p{font:400 .8125rem/1.4 var(--mono);color:var(--muted)}
 
-/* Sections */
-.section{padding-block:clamp(4rem,8vw,6rem)}
-.section-head{display:grid;gap:1rem;max-width:44rem}
-.section-head h2{font:400 clamp(2rem,3.8vw,3.1rem)/1.05 var(--serif);letter-spacing:-.025em}
-.section-head.split{grid-template-columns:minmax(0,1fr) 19rem;gap:1rem 4rem;align-items:end;max-width:none}
-.section-head.split > div{display:grid;gap:1rem}
-.head-note{color:var(--muted);font-size:.9375rem;line-height:1.65}
+/* about (single sober column) */
+.about{display:grid;grid-template-columns:minmax(0,40rem) 11rem;gap:2.5rem 3.5rem;align-items:start}
+.about-text{display:grid;gap:1rem;font-size:1.0625rem}
+.about-text .welcome{font:400 1.5rem/1.35 var(--serif)}
+.find{margin-top:.5rem;font-size:.9375rem;color:var(--muted)}
+.find a{white-space:nowrap}
+.portrait{width:11rem;height:11rem;border-radius:50%;object-fit:cover;object-position:50% 30%}
 
-/* Experience */
-.groups{display:grid;gap:3rem;margin-top:3.25rem}
-.group{border-top:1px solid var(--rule)}
-.group > h3{padding-top:.9rem}
-.entry{display:grid;grid-template-columns:7rem minmax(0,1fr) minmax(0,1.3fr);gap:.75rem 2rem;padding:1.6rem 0;border-bottom:1px solid var(--line)}
-.entry-date{font:400 .8125rem/1.9 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
-.entry h4{font:450 1.5rem/1.15 var(--serif);letter-spacing:-.01em}
-.org{margin-top:.4rem;font-size:.875rem;color:var(--muted)}
-.points{list-style:none;margin:0;padding:0;display:grid;gap:.6rem;color:var(--muted);font-size:.9375rem;line-height:1.6}
-.points li{position:relative;padding-left:1.1rem}
-.points li::before{content:"";position:absolute;left:0;top:.72em;width:.45rem;height:1px;background:var(--accent)}
-.ref-link{font:500 .8125rem/1 var(--mono);color:var(--accent);text-decoration:none;white-space:nowrap}
-.ref-link:hover{text-decoration:underline;text-underline-offset:3px}
+/* publications (journal list) */
+.pubs{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.pub{display:grid;grid-template-columns:9.5rem minmax(0,1fr) 11rem;gap:1rem 2.5rem;padding:2rem 0;border-bottom:1px solid var(--line)}
+.pub-when{display:grid;gap:.5rem;align-content:start;font:400 .8125rem/1.4 var(--mono);color:var(--muted)}
+.badge{justify-self:start;font:500 .6875rem/1 var(--mono);letter-spacing:.06em;color:var(--ink);border:1px solid var(--ink);padding:.3rem .4rem}
+.pub-body{display:grid;gap:.6rem;align-content:start}
+.pub-body h3{font:500 1.375rem/1.28 var(--serif)}
+.pub-body h3 a{color:var(--ink);text-decoration:none}
+.pub-body h3 a:hover{color:var(--blue)}
+.authors{font-size:.875rem;color:var(--muted)}
+.authors b{color:var(--ink);font-weight:600}
+.plain{font-size:.9688rem;line-height:1.65;max-width:62ch}
+.plain span{font:500 .75rem/1 var(--mono);color:var(--blue);margin-right:.4rem;text-transform:uppercase;letter-spacing:.04em}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.2rem}
+.tags span{font:500 .6875rem/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--ink);background:var(--blue-soft);padding:.35rem .45rem}
+.doi{font:400 .8125rem/1.3 var(--mono);overflow-wrap:anywhere}
+.fig{width:100%;height:auto;align-self:start}
 
-/* Publications */
-.pubs{background:var(--panel)}
-.refs{list-style:none;margin:3.25rem 0 0;padding:0;border-top:1px solid var(--rule);counter-reset:ref}
-.ref{display:grid;grid-template-columns:3rem minmax(0,1fr) 9.5rem;gap:.5rem 1.75rem;padding:1.75rem 0;border-bottom:1px solid var(--line);counter-increment:ref}
-.ref::before{content:"[" counter(ref) "]";font:italic 400 1.25rem/1.3 var(--serif);color:var(--accent)}
-.ref-body{display:grid;gap:.55rem}
-.ref-title{font:450 1.375rem/1.28 var(--serif);letter-spacing:-.005em;max-width:48rem}
-.ref-authors{font-size:.875rem;line-height:1.55;color:var(--muted)}
-.ref-authors b{color:var(--ink);font-weight:600}
-.ref-venue{display:flex;flex-wrap:wrap;align-items:baseline;gap:.35rem 1rem;font-size:.875rem}
-.ref-venue cite{font:italic 500 1rem/1.3 var(--serif)}
-.ref-venue .yr{font:400 .8125rem/1 var(--mono);color:var(--muted)}
-.doi{font:400 .8125rem/1.3 var(--mono);color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:.35rem;overflow-wrap:anywhere}
-.doi:hover{text-decoration:underline;text-underline-offset:3px}
-.ref-pos{display:grid;gap:.5rem;align-content:start;padding-top:.45rem}
-.dots{display:flex;flex-wrap:wrap;gap:4px}
-.dots i{width:8px;height:8px;border-radius:50%;border:1px solid var(--dot)}
-.dots i.me{background:var(--accent);border-color:var(--accent)}
-.pos-text{font:400 .75rem/1.3 var(--mono);color:var(--muted)}
+/* experience (institutional list) */
+.rows{border-top:1px solid var(--ink)}
+.row{display:grid;grid-template-columns:9.5rem minmax(0,1.1fr) minmax(0,1fr);gap:.5rem 2.5rem;padding:1.4rem 0;border-bottom:1px solid var(--line)}
+.row .when{font:400 .8125rem/1.8 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.row h3{font:500 1.25rem/1.3 var(--serif)}
+.row .org{font-size:.9375rem;color:var(--muted)}
+.row p.what{font-size:.9375rem;color:var(--ink)}
 
-/* Tools */
-.tools{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(2rem,4vw,3.5rem);margin-top:3.25rem}
-.tool{border-top:1px solid var(--rule);padding-top:1.4rem;display:flex;flex-direction:column;gap:1rem}
-.tool h3{font:400 clamp(2rem,3.2vw,2.5rem)/1.05 var(--serif);letter-spacing:-.02em}
-.tool > p{color:var(--muted);line-height:1.7;max-width:60ch}
-.tool-meta{display:grid;grid-template-columns:6rem minmax(0,1fr);margin:0;border-top:1px solid var(--line);font-size:.875rem}
-.tool-meta dt,.tool-meta dd{padding:.55rem 0;border-bottom:1px solid var(--line)}
-.tool-meta dt{font:500 .75rem/1.6 var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
-.tool-meta dd{margin:0}
-.tool-links{display:flex;flex-wrap:wrap;gap:.75rem 1.75rem;margin-top:.25rem}
-.tool-links a{display:inline-flex;align-items:center;gap:.4rem;font-weight:600;font-size:.875rem;color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px}
-.tool-links a:hover{border-color:var(--accent)}
-.toolkit{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem 1.5rem;margin-top:3.25rem;padding-top:1.1rem;border-top:1px solid var(--line)}
-.toolkit ul{display:flex;flex-wrap:wrap;gap:.35rem 1.25rem;list-style:none;margin:0;padding:0;font:400 .875rem/1.5 var(--mono);color:var(--muted)}
+/* tools (featured cards) */
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.card{background:#fff;padding:1.6rem 1.6rem 1.8rem;display:grid;gap:.7rem;align-content:start}
+.card .meta{font:400 .8125rem/1.4 var(--mono);color:var(--muted)}
+.card h3{font:500 1.5rem/1.2 var(--serif)}
+.card p{font-size:.9375rem;color:var(--ink);max-width:56ch}
+.card .links{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;font-size:.9375rem;font-weight:600}
 
-.open-tools{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1fr) minmax(0,1fr);gap:1.5rem clamp(2rem,4vw,3rem);margin-top:4rem;padding-top:1.4rem;border-top:1px solid var(--rule)}
-.open-head{display:grid;gap:.75rem;align-content:start}
-.open-tool{display:flex;flex-direction:column;gap:.75rem}
-.open-tool h3{font:450 1.5rem/1.15 var(--serif);letter-spacing:-.01em}
-.open-tool > p{color:var(--muted);font-size:.9375rem;line-height:1.65}
+/* credentials */
+.creds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem 3rem}
+.creds h3{font:500 .8125rem/1.2 var(--mono);color:var(--muted);padding-bottom:.6rem;border-bottom:1px solid var(--ink)}
+.creds ul{list-style:none;margin:0;padding:0}
+.creds li{display:flex;justify-content:space-between;gap:1rem;padding:.7rem 0;border-bottom:1px solid var(--line);font-size:.9375rem}
+.creds li span:last-child{font:400 .8125rem/1.6 var(--mono);color:var(--muted);white-space:nowrap}
 
-/* Credentials */
-.creds-section{border-top:1px solid var(--line)}
-.creds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2.5rem;margin-top:3.25rem}
-.cred h3{padding-bottom:.8rem;border-bottom:1px solid var(--rule)}
-.cred dl{margin:0}
-.cred dl div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem;padding:.85rem 0;border-bottom:1px solid var(--line)}
-.cred dt{font-weight:500;line-height:1.4}
-.cred dt span{display:block;margin-top:.2rem;font-weight:400;font-size:.875rem;color:var(--muted)}
-.cred dd{margin:0;font:400 .8125rem/1.7 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums;text-align:right}
+/* footer */
+.foot{padding-block:clamp(3rem,6vw,4.5rem) 2rem}
+.foot h2{font:400 clamp(1.9rem,3.6vw,2.75rem)/1.1 var(--serif);color:var(--blue)}
+.foot-links{display:flex;flex-wrap:wrap;gap:.6rem 2rem;margin-top:1.4rem;font-size:1.0625rem}
+.foot-base{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem 2rem;margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);font:400 .75rem/1.4 var(--mono);color:var(--muted)}
 
-/* Footer */
-.site-footer{background:var(--foot);color:var(--foot-text);padding:clamp(3.5rem,7vw,5rem) 0 1.5rem}
-.site-footer .label{color:var(--foot-accent)}
-.site-footer :focus-visible{outline-color:var(--foot-accent)}
-.foot-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(2.5rem,7vw,5.5rem);align-items:end}
-.foot-grid h2{margin-top:1rem;font:400 clamp(2rem,3.6vw,3rem)/1.06 var(--serif);letter-spacing:-.025em;max-width:17ch}
-.foot-links{list-style:none;margin:0;padding:0;border-top:1px solid var(--foot-line)}
-.foot-links li{border-bottom:1px solid var(--foot-line)}
-.foot-links a{display:grid;grid-template-columns:5.5rem minmax(0,1fr) auto;align-items:center;gap:1rem;padding:.95rem 0;text-decoration:none}
-.foot-links .k{font:500 .75rem/1 var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--foot-muted)}
-.foot-links .v{font:400 1.1875rem/1.3 var(--serif);overflow-wrap:anywhere;transition:color .15s}
-.foot-links a:hover .v{color:var(--foot-accent)}
-.foot-base{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem 2rem;margin-top:4rem;padding-top:1.2rem;border-top:1px solid var(--foot-line);font:400 .75rem/1.4 var(--mono);color:var(--foot-muted);letter-spacing:.04em}
-
-@media (max-width: 960px){
-  .hero{grid-template-columns:1fr}
-  .portrait{justify-self:start;max-width:380px}
-  .band-grid{grid-template-columns:1fr;gap:1.5rem}
-  .band-aside{border-left:0;border-top:1px solid var(--band-line);padding:1.25rem 0 0}
-  .entry{grid-template-columns:6rem minmax(0,1fr)}
-  .entry .points{grid-column:2}
-  .section-head.split,.tools,.foot-grid{grid-template-columns:1fr}
-  .open-tools{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .open-head{grid-column:1 / -1}
-  .creds{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media (max-width: 640px){
-  .shell{width:calc(100% - 32px)}
-  .header-row{flex-wrap:wrap;gap:0;padding-top:.7rem}
-  .site-nav{order:3;width:100%;gap:1.25rem;overflow-x:auto;padding:.35rem 0 .45rem;scrollbar-width:none}
-  .site-nav::-webkit-scrollbar{display:none}
-  .site-nav a{white-space:nowrap}
-  .facts{grid-template-columns:1fr;gap:0;padding-top:0}
-  .facts div{flex-direction:row-reverse;justify-content:flex-end;align-items:baseline;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--line)}
-  .facts dd{font-size:2rem;min-width:4.5rem}
-  .actions .btn{flex:1 1 100%;justify-content:center}
-  .entry{grid-template-columns:1fr;gap:.5rem}
-  .entry .points{grid-column:auto;margin-top:.4rem}
-  .ref{grid-template-columns:2.25rem minmax(0,1fr)}
-  .ref-pos{grid-column:2;padding-top:.25rem}
+@media (max-width: 900px){
+  .hero .shell{grid-template-columns:1fr;min-height:0;gap:0}
+  .hero-copy{padding-block:3rem 1.5rem}
+  .helix-wrap{height:360px;margin-inline:-24px}
+  .lab{right:24px;left:24px;justify-content:flex-start}
+  .hint{right:24px;top:.5rem}
+  .about{grid-template-columns:1fr}
+  .portrait{order:-1;width:8rem;height:8rem}
+  .pub{grid-template-columns:1fr;gap:.8rem}
+  .pub-when{grid-auto-flow:column;justify-content:start;align-items:center;gap:.8rem}
+  .fig{max-width:12rem;order:-1}
+  .row{grid-template-columns:1fr;gap:.3rem}
+  .cards{grid-template-columns:1fr}
   .creds{grid-template-columns:1fr}
-  .open-tools{grid-template-columns:1fr}
-  .foot-links a{grid-template-columns:4.5rem minmax(0,1fr) auto}
+}
+@media (max-width: 560px){
+  .shell{width:calc(100% - 32px)}
+  .helix-wrap{margin-inline:-16px}
+  .lab{left:16px;right:16px}
+  .hint{right:16px}
+  .nav{gap:1rem;flex-wrap:wrap}
+  .nav a:not(.cv){display:none}
 }
 </style>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="arr" viewBox="0 0 12 12"><path d="M3.2 8.8 8.8 3.2M4.2 3.2h4.6v4.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></symbol>
-</svg>
-
 <a class="skip" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="shell header-row">
-    <a class="brand" href="#top"><span class="monogram" aria-hidden="true">FK</span><span class="brand-name">Francisco Kirhman Osorio</span></a>
-    <nav class="site-nav" aria-label="Sections">
-      <a href="#experience">Experience</a>
+<header class="top">
+  <div class="shell">
+    <a class="brand" href="#main">Francisco Kirhman Osorio</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#about">About</a>
       <a href="#publications">Publications</a>
+      <a href="#experience">Experience</a>
       <a href="#tools">Tools</a>
-      <a href="#credentials">Credentials</a>
       <a href="#contact">Contact</a>
+      <a class="cv" href="Francisco_Kirhman_MSL_CV.pdf" target="_blank" rel="noopener">MSL CV</a>
     </nav>
   </div>
 </header>
 
 <main id="main">
-  <section class="hero shell" id="top" aria-labelledby="hero-title">
-    <div class="hero-copy">
-      <p class="label eyebrow">Medical Affairs &amp; scientific portfolio</p>
-      <h1 id="hero-title">Scientific depth.<br><em>Human connection.</em></h1>
-      <p class="lede">Engineer in Molecular Biotechnology from Universidad de Chile, with three peer-reviewed articles in genomics, biomaterials and microbiology, dual GCP certification, and medical education experience with healthcare professionals at Johnson &amp; Johnson MedTech.</p>
-      <div class="actions">
-        <a class="btn btn-primary" href="Francisco_Kirhman_MSL_CV.pdf" target="_blank" rel="noopener">Open MSL CV <span class="btn-meta">PDF · 2 pp</span></a>
-        <a class="btn" href="mailto:francisco.osorio@ug.uchile.cl">Email Francisco</a>
-      </div>
-      <dl class="facts">
-        <div><dt>National medical education programs coordinated</dt><dd>10</dd></div>
-        <div><dt>HCP participants across those programs</dt><dd>~260</dd></div>
-        <div><dt>Peer-reviewed articles, 2024–2026</dt><dd>3</dd></div>
-      </dl>
-    </div>
-    <figure class="portrait">
-      <div class="portrait-frame"><img src="portrait.jpg" width="640" height="800" alt="Portrait of Francisco Kirhman Osorio"></div>
-      <figcaption><span>Santiago, Chile</span><span>ES · EN · DE</span></figcaption>
-    </figure>
-  </section>
-
-  <section class="band" id="profile" aria-labelledby="profile-title">
-    <div class="shell band-grid">
-      <p class="label">Profile</p>
-      <div class="band-main">
-        <h2 id="profile-title">Evidence-led, from the bench to HCP education.</h2>
-        <p>Research in genomic bioinformatics, biomaterials and microbiology, with experience in scientific writing across multidisciplinary teams. Clinical research documentation review under GCP, backed by a PUC Chile Diploma in Clinical Study Management. At Johnson &amp; Johnson MedTech, coordinated HCP education under HCC and HCBI compliance frameworks and designed a field feedback process that became a local standard.</p>
-      </div>
-      <div class="band-aside">
-        <p class="label">Working areas</p>
-        <ul>
-          <li>Medical education programs</li>
-          <li>Healthcare compliance</li>
-          <li>Clinical research &amp; GCP</li>
-          <li>Genomic data analysis</li>
-          <li>Scientific writing</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="section shell" id="experience" aria-labelledby="experience-title">
-    <div class="section-head">
-      <p class="label">Experience</p>
-      <h2 id="experience-title">Medical education, clinical research and laboratory science.</h2>
-    </div>
-
-    <div class="groups">
-      <div class="group">
-        <h3 class="label">Medical education</h3>
-        <article class="entry">
-          <p class="entry-date">2025–2026</p>
-          <div>
-            <h4>Professional Education Specialist</h4>
-            <p class="org">Johnson &amp; Johnson MedTech · Santiago</p>
-          </div>
-          <ul class="points">
-            <li>Coordinated ten national medical education programs across orthopaedic specialties for approximately 260 HCPs, including surgeons, residents, operating room nurses and KOL faculty, under global HCC and HCBI compliance frameworks.</li>
-            <li>Partnered with academic leaders to develop the Future Leaders curriculum, defining progression, learning objectives, simulation activities and digital learning components.</li>
-            <li>Designed and implemented a structured HCP field feedback and product usage reporting process, adopted as a local standard.</li>
-            <li>Selected participants from targeting and segmentation data; tracked participation, engagement and KPIs in Salesforce CRM and Power BI.</li>
-          </ul>
-        </article>
-      </div>
-
-      <div class="group">
-        <h3 class="label">Clinical research</h3>
-        <article class="entry">
-          <p class="entry-date">2024–2025</p>
-          <div>
-            <h4>Clinical Research Intern, Research Unit</h4>
-            <p class="org">Clínica Indisa · Santiago</p>
-          </div>
-          <ul class="points">
-            <li>Supported the Research Unit Coordinator and reviewed clinical research proposals for ethical and regulatory standards before ethics committee submission.</li>
-            <li>Applied GCP training and the Diploma in Clinical Study Management to research documentation review.</li>
-          </ul>
-        </article>
-      </div>
-
-      <div class="group">
-        <h3 class="label">Scientific research</h3>
-        <article class="entry">
-          <p class="entry-date">2024–2025</p>
-          <div>
-            <h4>Research Assistant, Genomic Bioinformatics</h4>
-            <p class="org">DiGenoma Lab · Universidad de O’Higgins</p>
-          </div>
-          <ul class="points">
-            <li>Analyzed large genomic datasets and built reproducible pipelines across cancer and SARS-CoV-2 projects: preprocessing, variant calling and interpretation, in Python, R, SQL and Bash.</li>
-            <li>Co-authored the resulting article in <i>Scientific Reports</i>. <a class="ref-link" href="#ref-1">[1]</a></li>
-          </ul>
-        </article>
-        <article class="entry">
-          <p class="entry-date">2023–2024</p>
-          <div>
-            <h4>Research Assistant, Biomaterials</h4>
-            <p class="org">BiopRel · Universidad de los Andes</p>
-          </div>
-          <ul class="points">
-            <li>Analyzed compressive data for tunable GelMA hydrogels built from mammalian and non-mammalian gelatins.</li>
-            <li>Co-authored the peer-reviewed article in <i>Gels</i>. <a class="ref-link" href="#ref-2">[2]</a></li>
-          </ul>
-        </article>
-        <article class="entry">
-          <p class="entry-date">2021–2023</p>
-          <div>
-            <h4>Research Assistant</h4>
-            <p class="org">IIBM · Pontificia Universidad Católica de Chile</p>
-          </div>
-          <ul class="points">
-            <li>Managed the biological workstream of an arsenic bioremediation project: experimental planning, bioreactor operation and image analysis.</li>
-            <li>Co-authored the peer-reviewed article in <i>Frontiers in Microbiology</i>. <a class="ref-link" href="#ref-3">[3]</a></li>
-          </ul>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="pubs section" id="publications" aria-labelledby="publications-title">
+  <section class="hero" aria-labelledby="hero-title">
     <div class="shell">
-      <div class="section-head split">
-        <div>
-          <p class="label">Publications</p>
-          <h2 id="publications-title">Peer-reviewed articles</h2>
+      <div class="hero-copy">
+        <p class="eyebrow">Medical Affairs · Santiago, Chile</p>
+        <h1 id="hero-title">Scientific depth, human connection.</h1>
+        <p class="lede">Engineer in Molecular Biotechnology with three peer-reviewed articles, dual GCP certification and medical education experience with healthcare professionals at Johnson &amp; Johnson MedTech.</p>
+        <div class="actions">
+          <a class="btn solid" href="Francisco_Kirhman_MSL_CV.pdf" target="_blank" rel="noopener">Open MSL CV</a>
+          <a class="btn line" href="mailto:francisco.osorio@ug.uchile.cl">Email Francisco</a>
         </div>
-        <p class="head-note">Most recent first. The dot row marks Francisco’s place in each author list.</p>
       </div>
+      <div class="helix-wrap">
+        <canvas id="helix" role="img" aria-label="Interactive DNA double helix. Moving the pointer over it introduces single-nucleotide variants; the Proofread button repairs them."></canvas>
+        <p class="hint" id="hint">Hover the helix to introduce variants</p>
+        <div class="lab">
+          <span class="key" aria-hidden="true"><span><i style="background:#2143d6"></i>A</span><span><i style="background:#8fa8ff"></i>T</span><span><i style="background:#0d1526"></i>G</span><span><i style="background:#b3bdd0"></i>C</span></span>
+          <span class="count" aria-live="polite">Variants <b id="varCount">0</b></span>
+          <button type="button" id="btnMutate">Add a variant</button>
+          <button type="button" id="btnRepair">Proofread</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <ol class="refs">
-        <li class="ref" id="ref-1">
-          <div class="ref-body">
-            <p class="ref-title">Ultra-deep sequencing reveals intra-host diversity and selective constraint in SARS-CoV-2 samples from Chile</p>
-            <p class="ref-authors">Moraga C, <b>Kirhman F</b>, Bernal B, Poblete S, Jullian P, Gonzalez A, Latorre M, Di Genova A.</p>
-            <p class="ref-venue"><cite>Scientific Reports</cite><span class="yr">31 Aug 2026</span><a class="doi" href="https://doi.org/10.1038/s41598-026-59521-8" target="_blank" rel="noopener">doi:10.1038/s41598-026-59521-8<svg class="arr" aria-hidden="true"><use href="#arr"/></svg></a></p>
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="shell">
+      <div class="sec-head"><h2 id="about-title">About</h2></div>
+      <div class="about">
+        <div class="about-text">
+          <p class="welcome">Welcome. I’m an Engineer in Molecular Biotechnology from Universidad de Chile, working where research evidence, clinical research and medical education meet.</p>
+          <p>My research spans genomic bioinformatics, biomaterials and microbiology, with three peer-reviewed articles. Each one has a plain-language summary below.</p>
+          <p>At Johnson &amp; Johnson MedTech I coordinated ten national medical education programs for approximately 260 healthcare professionals under HCC and HCBI compliance frameworks, and developed the Future Leaders curriculum with academic leaders.</p>
+          <p>My clinical research training includes dual GCP certification, a PUC Chile Diploma in Clinical Study Management, and reviewing research proposals before ethics committee submission at Clínica Indisa.</p>
+          <p class="find">Where to find me: <a href="https://www.linkedin.com/in/franciscokirhman/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/FranciscoKirhman" target="_blank" rel="noopener">GitHub</a> · <a href="mailto:francisco.osorio@ug.uchile.cl">Email</a> · <a href="Francisco_Kirhman_MSL_CV.pdf" target="_blank" rel="noopener">MSL CV</a></p>
+        </div>
+        <img class="portrait" src="portrait.jpg" width="640" height="800" alt="Portrait of Francisco Kirhman Osorio">
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="publications" aria-labelledby="pubs-title">
+    <div class="shell">
+      <div class="sec-head"><h2 id="pubs-title">Publications</h2><p>3 peer-reviewed · most recent first</p></div>
+      <ol class="pubs">
+        <li class="pub">
+          <div class="pub-when"><span>Aug 2026</span><span class="badge">PEER-REVIEWED</span><span>Scientific Reports</span></div>
+          <div class="pub-body">
+            <h3><a href="https://doi.org/10.1038/s41598-026-59521-8" target="_blank" rel="noopener">Ultra-deep sequencing reveals intra-host diversity and selective constraint in SARS-CoV-2 samples from Chile</a></h3>
+            <p class="authors">Moraga C, <b>Kirhman F</b>, Bernal B, Poblete S, Jullian P, Gonzalez A, Latorre M, Di Genova A.</p>
+            <p class="plain"><span>In plain language</span>SARS-CoV-2 from Chilean patient samples was sequenced at very high depth to reveal the small genetic variants that appear inside a single infected person, and to measure how natural selection shapes them.</p>
+            <div class="tags"><span>Genomics</span><span>SARS-CoV-2</span><span>2nd of 8 authors</span></div>
+            <a class="doi" href="https://doi.org/10.1038/s41598-026-59521-8" target="_blank" rel="noopener">doi:10.1038/s41598-026-59521-8</a>
           </div>
-          <div class="ref-pos">
-            <span class="dots" role="img" aria-label="Second of eight authors"><i></i><i class="me"></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
-            <span class="pos-text" aria-hidden="true">2nd of 8</span>
-          </div>
+          <svg class="fig" viewBox="0 0 176 128" role="img" aria-label="Illustration: stacked sequencing reads over a genome, with one variant column highlighted">
+            <rect width="176" height="128" fill="#f5f7fc"/>
+            <g fill="#8fa8ff">
+              <rect x="10" y="14" width="58" height="5"/><rect x="74" y="14" width="46" height="5"/><rect x="126" y="14" width="40" height="5"/>
+              <rect x="22" y="24" width="64" height="5"/><rect x="92" y="24" width="52" height="5"/>
+              <rect x="10" y="34" width="40" height="5"/><rect x="56" y="34" width="70" height="5"/><rect x="132" y="34" width="34" height="5"/>
+              <rect x="30" y="44" width="54" height="5"/><rect x="90" y="44" width="60" height="5"/>
+              <rect x="10" y="54" width="66" height="5"/><rect x="82" y="54" width="44" height="5"/><rect x="132" y="54" width="34" height="5"/>
+              <rect x="18" y="64" width="48" height="5"/><rect x="72" y="64" width="62" height="5"/>
+              <rect x="10" y="74" width="36" height="5"/><rect x="52" y="74" width="58" height="5"/><rect x="116" y="74" width="50" height="5"/>
+              <rect x="26" y="84" width="70" height="5"/><rect x="102" y="84" width="56" height="5"/>
+            </g>
+            <g fill="#ff5a36"><rect x="104" y="14" width="4" height="5"/><rect x="104" y="34" width="4" height="5"/><rect x="104" y="54" width="4" height="5"/><rect x="104" y="74" width="4" height="5"/></g>
+            <rect x="10" y="104" width="156" height="3" fill="#0d1526"/>
+            <rect x="104" y="100" width="4" height="11" fill="#ff5a36"/>
+          </svg>
         </li>
-        <li class="ref" id="ref-2">
-          <div class="ref-body">
-            <p class="ref-title">Designing tunable GelMA hydrogels by integrating mammalian and non-mammalian gelatins</p>
-            <p class="ref-authors">Padilla C, Campos V, González E, <b>Kirhman F</b>, Enrione J.</p>
-            <p class="ref-venue"><cite>Gels</cite><span class="yr">Jun 2026</span><a class="doi" href="https://doi.org/10.3390/gels12060540" target="_blank" rel="noopener">doi:10.3390/gels12060540<svg class="arr" aria-hidden="true"><use href="#arr"/></svg></a></p>
+        <li class="pub">
+          <div class="pub-when"><span>Jun 2026</span><span class="badge">PEER-REVIEWED</span><span>Gels</span></div>
+          <div class="pub-body">
+            <h3><a href="https://doi.org/10.3390/gels12060540" target="_blank" rel="noopener">Designing tunable GelMA hydrogels by integrating mammalian and non-mammalian gelatins</a></h3>
+            <p class="authors">Padilla C, Campos V, González E, <b>Kirhman F</b>, Enrione J.</p>
+            <p class="plain"><span>In plain language</span>Blending pig-skin and salmon-skin gelatin in different ratios produces hydrogels whose stiffness, swelling and release of a test molecule can be tuned without adding any other ingredient.</p>
+            <div class="tags"><span>Biomaterials</span><span>Hydrogels</span><span>4th of 5 authors</span></div>
+            <a class="doi" href="https://doi.org/10.3390/gels12060540" target="_blank" rel="noopener">doi:10.3390/gels12060540</a>
           </div>
-          <div class="ref-pos">
-            <span class="dots" role="img" aria-label="Fourth of five authors"><i></i><i></i><i></i><i class="me"></i><i></i></span>
-            <span class="pos-text" aria-hidden="true">4th of 5</span>
-          </div>
+          <svg class="fig" viewBox="0 0 176 128" role="img" aria-label="Illustration: a crosslinked polymer network made of two kinds of strands">
+            <rect width="176" height="128" fill="#f5f7fc"/>
+            <g stroke-width="2" fill="none">
+              <path d="M20 30 L58 22 L96 38 L136 26 L160 44" stroke="#2143d6"/>
+              <path d="M16 70 L50 58 L88 76 L124 62 L162 80" stroke="#8fa8ff"/>
+              <path d="M24 106 L62 96 L100 110 L138 98 L158 112" stroke="#2143d6"/>
+              <path d="M58 22 L50 58 L62 96" stroke="#8fa8ff"/>
+              <path d="M96 38 L88 76 L100 110" stroke="#2143d6"/>
+              <path d="M136 26 L124 62 L138 98" stroke="#8fa8ff"/>
+              <path d="M20 30 L16 70 L24 106" stroke="#2143d6"/>
+              <path d="M160 44 L162 80 L158 112" stroke="#8fa8ff"/>
+            </g>
+            <g fill="#0d1526"><circle cx="58" cy="22" r="3.5"/><circle cx="96" cy="38" r="3.5"/><circle cx="136" cy="26" r="3.5"/><circle cx="50" cy="58" r="3.5"/><circle cx="88" cy="76" r="3.5"/><circle cx="124" cy="62" r="3.5"/><circle cx="62" cy="96" r="3.5"/><circle cx="100" cy="110" r="3.5"/><circle cx="138" cy="98" r="3.5"/></g>
+          </svg>
         </li>
-        <li class="ref" id="ref-3">
-          <div class="ref-body">
-            <p class="ref-title">Membrane vesicles in Acidithiobacillia class extreme acidophiles: influence on collective behaviors of ‘Fervidacidithiobacillus caldus’</p>
-            <p class="ref-authors">Rossoni S, Beard S, Segura-Bidermann MI, Duarte-Ramírez J, <b>Kirhman Osorio F</b>, Varas-Godoy M, Martínez-Bellange P, Vera M, Quatrini R, Castro M.</p>
-            <p class="ref-venue"><cite>Frontiers in Microbiology</cite><span class="yr">Jan 2024</span><a class="doi" href="https://doi.org/10.3389/fmicb.2023.1331363" target="_blank" rel="noopener">doi:10.3389/fmicb.2023.1331363<svg class="arr" aria-hidden="true"><use href="#arr"/></svg></a></p>
+        <li class="pub">
+          <div class="pub-when"><span>Jan 2024</span><span class="badge">PEER-REVIEWED</span><span>Frontiers in Microbiology</span></div>
+          <div class="pub-body">
+            <h3><a href="https://doi.org/10.3389/fmicb.2023.1331363" target="_blank" rel="noopener">Membrane vesicles in Acidithiobacillia class extreme acidophiles: influence on collective behaviors of ‘Fervidacidithiobacillus caldus’</a></h3>
+            <p class="authors">Rossoni S, Beard S, Segura-Bidermann MI, Duarte-Ramírez J, <b>Kirhman Osorio F</b>, Varas-Godoy M, Martínez-Bellange P, Vera M, Quatrini R, Castro M.</p>
+            <p class="plain"><span>In plain language</span>Acid-loving bacteria used in mining release tiny membrane bubbles called vesicles. The study shows vesicles are common across this bacterial family and change how the bacteria colonize surfaces and form biofilms.</p>
+            <div class="tags"><span>Microbiology</span><span>Biofilms</span><span>5th of 10 authors</span></div>
+            <a class="doi" href="https://doi.org/10.3389/fmicb.2023.1331363" target="_blank" rel="noopener">doi:10.3389/fmicb.2023.1331363</a>
           </div>
-          <div class="ref-pos">
-            <span class="dots" role="img" aria-label="Fifth of ten authors"><i></i><i></i><i></i><i></i><i class="me"></i><i></i><i></i><i></i><i></i><i></i></span>
-            <span class="pos-text" aria-hidden="true">5th of 10</span>
-          </div>
+          <svg class="fig" viewBox="0 0 176 128" role="img" aria-label="Illustration: a rod-shaped bacterium releasing membrane vesicles, some joined in a chain">
+            <rect width="176" height="128" fill="#f5f7fc"/>
+            <rect x="22" y="44" width="92" height="40" rx="20" fill="#eef2fe" stroke="#0d1526" stroke-width="2"/>
+            <rect x="30" y="52" width="76" height="24" rx="12" fill="none" stroke="#8fa8ff" stroke-width="1.5"/>
+            <g fill="#fff" stroke="#2143d6" stroke-width="2">
+              <circle cx="120" cy="40" r="7"/><circle cx="136" cy="30" r="6"/><circle cx="150" cy="22" r="5"/>
+              <circle cx="124" cy="92" r="6"/><circle cx="140" cy="100" r="6"/><circle cx="154" cy="106" r="6"/><circle cx="166" cy="110" r="4"/>
+              <circle cx="60" cy="100" r="5"/><circle cx="84" cy="30" r="5"/>
+            </g>
+          </svg>
         </li>
       </ol>
     </div>
   </section>
 
-  <section class="section shell" id="tools" aria-labelledby="tools-title">
-    <div class="section-head">
-      <p class="label">Evidence tools</p>
-      <h2 id="tools-title">Public evidence, organized so it can be checked.</h2>
-    </div>
-
-    <div class="tools">
-      <article class="tool">
-        <p class="label">Scientific intelligence</p>
-        <h3>KOL Radar</h3>
-        <p>A research workspace for Medical Affairs preparation: which specialists and centers are active in a clinical area in Chile, and which public evidence supports that view. Every signal traces back to its source, and the scoring model and data-protection basis are documented in the repository. It supports preparation, not KOL designation or outreach decisions.</p>
-        <dl class="tool-meta">
-          <dt>Area</dt><dd>Oncology, Chile</dd>
-          <dt>Sources</dt><dd>PubMed, ClinicalTrials.gov, SciELO, published institutional affiliations</dd>
-          <dt>Status</dt><dd>Beta, sample data · 2026</dd>
-        </dl>
-        <div class="tool-links">
-          <a href="https://franciscokirhman.github.io/kol-radar/web/index.html" target="_blank" rel="noopener">Open the beta<svg class="arr" aria-hidden="true"><use href="#arr"/></svg></a>
-          <a href="https://github.com/FranciscoKirhman/kol-radar" target="_blank" rel="noopener">Methods and source<svg class="arr" aria-hidden="true"><use href="#arr"/></svg></a>
-        </div>
-      </article>
-
-      <article class="tool">
-        <p class="label">Research visualization</p>
-        <h3>BiopREL</h3>
-        <p>Python processing and Tableau dashboards comparing Young’s modulus across salmon and porcine gelatin GelMA formulations, from the research program later published in <i>Gels</i>.</p>
-        <dl class="tool-meta">
-          <dt>Measure</dt><dd>Young’s modulus under compression</dd>
-          <dt>Stack</dt><dd>Python, Tableau</dd>
-          <dt>Status</dt><dd>Complete · 2023</dd>
-        </dl>
-        <div class="tool-links">
-          <a href="https://public.tableau.com/app/profile/francisco.kirhman.osorio/vizzes" target="_blank" rel="noopener">Tableau dashboards<svg class="arr" aria-hidden="true"><use href="#arr"/></svg></a>
-          <a href="https://github.com/FranciscoKirhman/BiopREL" target="_blank" rel="noopener">Source<svg class="arr" aria-hidden="true"><use href="#arr"/></svg></a>
-        </div>
-      </article>
-    </div>
-
-    <div class="open-tools">
-      <div class="open-head">
-        <p class="label">Open tools</p>
-        <p class="head-note">Personal utilities, opened with fictional demo data. Anyone can use them; what you enter stays in your own browser.</p>
+  <section class="section" id="experience" aria-labelledby="exp-title">
+    <div class="shell">
+      <div class="sec-head"><h2 id="exp-title">Experience</h2><p>2021 to 2026</p></div>
+      <div class="rows">
+        <article class="row"><p class="when">2025–2026</p><div><h3>Professional Education Specialist</h3><p class="org">Johnson &amp; Johnson MedTech · Santiago</p></div><p class="what">Ten national programs across orthopaedic specialties for ~260 HCPs, with KOL faculty. Designed an HCP field feedback process adopted as a local standard; tracked engagement in Salesforce CRM and Power BI.</p></article>
+        <article class="row"><p class="when">2024–2025</p><div><h3>Clinical Research Intern, Research Unit</h3><p class="org">Clínica Indisa · Santiago</p></div><p class="what">Reviewed clinical research proposals for ethical and regulatory standards before ethics committee submission.</p></article>
+        <article class="row"><p class="when">2024–2025</p><div><h3>Research Assistant, Genomic Bioinformatics</h3><p class="org">DiGenoma Lab · Universidad de O’Higgins</p></div><p class="what">Reproducible pipelines for cancer and SARS-CoV-2 genomics in Python, R, SQL and Bash.</p></article>
+        <article class="row"><p class="when">2023–2024</p><div><h3>Research Assistant, Biomaterials</h3><p class="org">BiopRel · Universidad de los Andes</p></div><p class="what">Compressive data analysis for tunable GelMA hydrogels.</p></article>
+        <article class="row"><p class="when">2021–2023</p><div><h3>Research Assistant</h3><p class="org">IIBM · Pontificia Universidad Católica de Chile</p></div><p class="what">Managed the biological workstream of an arsenic bioremediation project: experimental planning, bioreactor operation and image analysis.</p></article>
       </div>
-      <article class="open-tool">
-        <h3>Application tracker</h3>
-        <p>Single-file tracker for a job search: pipeline stages, interview rounds, calendar and response-time analytics, with JSON import and export.</p>
-        <div class="tool-links">
-          <a href="job-tracker/">Open tracker<svg class="arr" aria-hidden="true"><use href="#arr"/></svg></a>
-          <a href="https://github.com/FranciscoKirhman/coding-portfolio/tree/main/docs/job-tracker" target="_blank" rel="noopener">Source<svg class="arr" aria-hidden="true"><use href="#arr"/></svg></a>
-        </div>
-      </article>
-      <article class="open-tool">
-        <h3>Training dashboard</h3>
-        <p>Strength-training dashboard: weekly plan, muscle volume against target bands on an anatomical map, progress charts and a searchable session history. Load your own profile file.</p>
-        <div class="tool-links">
-          <a href="training-dashboard/">Open dashboard<svg class="arr" aria-hidden="true"><use href="#arr"/></svg></a>
-          <a href="https://github.com/FranciscoKirhman/coding-portfolio/tree/main/docs/training-dashboard#formato" target="_blank" rel="noopener">Data format<svg class="arr" aria-hidden="true"><use href="#arr"/></svg></a>
-        </div>
-      </article>
-    </div>
-
-    <div class="toolkit">
-      <p class="label">Toolkit</p>
-      <ul>
-        <li>Python</li><li>R</li><li>SQL</li><li>Bash</li><li>Tableau</li><li>Power BI</li><li>Salesforce CRM</li>
-      </ul>
     </div>
   </section>
 
-  <section class="section creds-section" id="credentials" aria-labelledby="credentials-title">
+  <section class="section" id="tools" aria-labelledby="tools-title">
     <div class="shell">
-      <div class="section-head">
-        <p class="label">Credentials</p>
-        <h2 id="credentials-title">Education, certification and languages</h2>
+      <div class="sec-head"><h2 id="tools-title">Tools</h2><p>Evidence tools and open utilities</p></div>
+      <div class="cards">
+        <article class="card">
+          <p class="meta">2026 · Beta · Oncology, Chile</p>
+          <h3>KOL Radar</h3>
+          <p>A research workspace that maps specialists, centers and public evidence from PubMed, ClinicalTrials.gov and SciELO, with a documented scoring model. It supports preparation, not KOL designation or outreach decisions.</p>
+          <div class="tags"><span>Medical Affairs</span><span>Public evidence</span></div>
+          <p class="links"><a href="https://franciscokirhman.github.io/kol-radar/web/index.html" target="_blank" rel="noopener">Open the beta</a><a href="https://github.com/FranciscoKirhman/kol-radar" target="_blank" rel="noopener">Methods and source</a></p>
+        </article>
+        <article class="card">
+          <p class="meta">2023 · Complete</p>
+          <h3>BiopREL</h3>
+          <p>Python processing and Tableau dashboards comparing Young’s modulus across salmon and porcine gelatin formulations, from the research program published in <i>Gels</i>.</p>
+          <div class="tags"><span>Python</span><span>Tableau</span></div>
+          <p class="links"><a href="https://public.tableau.com/app/profile/francisco.kirhman.osorio/vizzes" target="_blank" rel="noopener">Dashboards</a><a href="https://github.com/FranciscoKirhman/BiopREL" target="_blank" rel="noopener">Source</a></p>
+        </article>
+        <article class="card">
+          <p class="meta">Open utility · demo data</p>
+          <h3>Application tracker</h3>
+          <p>Single-file job search tracker with pipeline stages, interview rounds, calendar and response-time analytics. It opens with fictional demo companies; what you add stays in your browser.</p>
+          <div class="tags"><span>HTML</span><span>No backend</span></div>
+          <p class="links"><a href="job-tracker/">Open tracker</a><a href="https://github.com/FranciscoKirhman/coding-portfolio/tree/main/docs/job-tracker" target="_blank" rel="noopener">Source</a></p>
+        </article>
+        <article class="card">
+          <p class="meta">Open utility · demo data</p>
+          <h3>Training dashboard</h3>
+          <p>Strength-training dashboard with a weekly plan, muscle volume on an anatomical map, progress charts and session history. It opens with a fictional athlete; load your own profile file.</p>
+          <div class="tags"><span>HTML</span><span>Canvas</span></div>
+          <p class="links"><a href="training-dashboard/">Open dashboard</a><a href="https://github.com/FranciscoKirhman/coding-portfolio/tree/main/docs/training-dashboard#formato" target="_blank" rel="noopener">Data format</a></p>
+        </article>
       </div>
+    </div>
+  </section>
+
+  <section class="section" id="credentials" aria-labelledby="cred-title">
+    <div class="shell">
+      <div class="sec-head"><h2 id="cred-title">Credentials</h2></div>
       <div class="creds">
-        <div class="cred">
-          <h3 class="label">Education</h3>
-          <dl>
-            <div><dt>Engineer in Molecular Biotechnology<span>Universidad de Chile · ten-semester professional degree</span></dt><dd>2015–2022</dd></div>
-            <div><dt>Diploma in Clinical Study Management<span>Pontificia Universidad Católica de Chile</span></dt><dd>2024</dd></div>
-          </dl>
+        <div>
+          <h3>Education</h3>
+          <ul>
+            <li><span>Engineer in Molecular Biotechnology, Universidad de Chile</span><span>2015–2022</span></li>
+            <li><span>Diploma in Clinical Study Management, PUC Chile</span><span>2024</span></li>
+          </ul>
         </div>
-        <div class="cred">
-          <h3 class="label">Clinical research</h3>
-          <dl>
-            <div><dt>Good Clinical Practice<span>NIDA</span></dt><dd>2024</dd></div>
-            <div><dt>Good Clinical Practice<span>ACROCHI</span></dt><dd>2024</dd></div>
-            <div><dt>Human Subjects Research<span>CITI Program</span></dt><dd>2024</dd></div>
-            <div><dt>Good Practices for Clinical Trials<span>WHO · participation</span></dt><dd>2026</dd></div>
-            <div><dt>Drug Development Product Management Specialization<span>UC San Diego</span></dt><dd>2026</dd></div>
-          </dl>
+        <div>
+          <h3>Clinical research</h3>
+          <ul>
+            <li><span>Good Clinical Practice, NIDA</span><span>2024</span></li>
+            <li><span>Good Clinical Practice, ACROCHI</span><span>2024</span></li>
+            <li><span>Human Subjects Research, CITI Program</span><span>2024</span></li>
+            <li><span>Good Practices for Clinical Trials, WHO (participation)</span><span>2026</span></li>
+            <li><span>Drug Development Product Management Specialization, UC San Diego</span><span>2026</span></li>
+          </ul>
         </div>
-        <div class="cred">
-          <h3 class="label">Languages</h3>
-          <dl>
-            <div><dt>Spanish</dt><dd>Native</dd></div>
-            <div><dt>English</dt><dd>C1/C2</dd></div>
-            <div><dt>German<span>DAAD</span></dt><dd>B1+</dd></div>
-          </dl>
+        <div>
+          <h3>Languages</h3>
+          <ul>
+            <li><span>Spanish</span><span>Native</span></li>
+            <li><span>English</span><span>C1/C2</span></li>
+            <li><span>German (DAAD)</span><span>B1+</span></li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 </main>
 
-<footer class="site-footer" id="contact">
-  <div class="shell foot-grid">
-    <div>
-      <p class="label">Contact</p>
-      <h2>Interested in science that moves conversations forward?</h2>
-    </div>
-    <ul class="foot-links">
-      <li><a href="mailto:francisco.osorio@ug.uchile.cl"><span class="k">Email</span><span class="v">francisco.osorio@ug.uchile.cl</span><svg class="arr" aria-hidden="true"><use href="#arr"/></svg></a></li>
-      <li><a href="https://www.linkedin.com/in/franciscokirhman/" target="_blank" rel="noopener"><span class="k">LinkedIn</span><span class="v">in/franciscokirhman</span><svg class="arr" aria-hidden="true"><use href="#arr"/></svg></a></li>
-      <li><a href="Francisco_Kirhman_MSL_CV.pdf" target="_blank" rel="noopener"><span class="k">CV</span><span class="v">MSL CV, PDF</span><svg class="arr" aria-hidden="true"><use href="#arr"/></svg></a></li>
-    </ul>
-  </div>
-  <div class="shell foot-base">
-    <p>Francisco Kirhman Osorio · Santiago, Chile</p>
-    <p>Updated September 2026</p>
+<footer class="foot" id="contact">
+  <div class="shell">
+    <h2>Interested in science that moves conversations forward?</h2>
+    <p class="foot-links"><a href="mailto:francisco.osorio@ug.uchile.cl">francisco.osorio@ug.uchile.cl</a><a href="https://www.linkedin.com/in/franciscokirhman/" target="_blank" rel="noopener">LinkedIn</a><a href="Francisco_Kirhman_MSL_CV.pdf" target="_blank" rel="noopener">MSL CV</a><a href="https://github.com/FranciscoKirhman" target="_blank" rel="noopener">GitHub</a></p>
+    <div class="foot-base"><span>Francisco Kirhman Osorio · Santiago, Chile</span><span>Updated September 2026</span></div>
   </div>
 </footer>
+
+<script>
+/* Interactive DNA helix, written for this page (Canvas 2D, no libraries).
+   Pointer over the helix: local strand opening and single-nucleotide variants, with
+   transitions (A<->G, C<->T) twice as likely as transversions. Click away from the helix or
+   use the button: a proofreading enzyme walks the axis and restores the original bases.
+   Binding proteins dock beside variants. Respects prefers-reduced-motion. */
+(function(){
+  var canvas = document.getElementById('helix');
+  if(!canvas || !canvas.getContext) return;
+  var ctx = canvas.getContext('2d');
+  var wrap = canvas.parentNode;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var COLOR = {A:'#2143d6', T:'#8fa8ff', G:'#0d1526', C:'#b3bdd0'};
+  var MUT = '#ff5a36', ENZYME = '#2143d6';
+  var PAIR = {A:'T', T:'A', G:'C', C:'G'};
+  var TRANSITION = {A:'G', G:'A', C:'T', T:'C'};
+  var TRANSVERSION = {A:['C','T'], G:['C','T'], C:['A','G'], T:['A','G']};
+  var N = 46, TWIST = 2*Math.PI/10.5, GROOVE = 0.78*Math.PI;   // 10.5 bp per turn; strands offset for major/minor grooves
+
+  var W = 0, H = 0, geo = null, t0 = performance.now(), last = t0, visible = true;
+  var pointer = {x:-9999, y:-9999, vx:0, vy:0, inside:false};
+  var lastMutation = 0, variants = 0, enzyme = null;
+  var countEl = document.getElementById('varCount');
+  var hint = document.getElementById('hint');
+  if(window.matchMedia && matchMedia('(hover: none)').matches) hint.textContent = 'Tap the helix to introduce variants';
+
+  function rnd(a,b){ return a + Math.random()*(b-a); }
+  var pairs = [];
+  for(var i=0;i<N;i++){
+    var b = 'ACGT'[(Math.random()*4)|0];
+    pairs.push({orig:b, base:b, heat:0, flash:0, label:null, labelLife:0, lx:null, ly:null,
+                pos: 21560 + i*37 + ((Math.random()*20)|0), jit:[rnd(-1,1),rnd(-1,1),rnd(-1,1),rnd(-1,1)]});
+  }
+  var ambient = [];
+  for(var k=0;k<70;k++) ambient.push({u:Math.random(), v:rnd(-1,1), r:rnd(.6,1.6), s:rnd(.2,.6), ph:Math.random()*6.28, dx:0, dy:0});
+  var proteins = [];
+  for(var p=0;p<3;p++) proteins.push({u:rnd(.15,.85), off:rnd(1.6,2.6)*(p%2?1:-1), x:0, y:0, ph:Math.random()*6.28, dock:-1});
+
+  function axisPoint(u){ return {x: geo.p0.x + geo.ax*geo.len*u, y: geo.p0.y + geo.ay*geo.len*u}; }
+
+  function resize(){
+    var r = wrap.getBoundingClientRect();
+    W = Math.max(1, r.width); H = Math.max(1, r.height);
+    var dpr = Math.min(2, window.devicePixelRatio || 1);
+    canvas.width = Math.round(W*dpr); canvas.height = Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    var narrow = W < 700;
+    var p0 = narrow ? {x:W*.06, y:H*.72} : {x:W*.06, y:H*.84};
+    var p1 = narrow ? {x:W*.94, y:H*.24} : {x:W*.94, y:H*.14};
+    var ax = p1.x-p0.x, ay = p1.y-p0.y, len = Math.hypot(ax,ay);
+    geo = {p0:p0, ax:ax/len, ay:ay/len, len:len, nx:-ay/len, ny:ax/len, R: narrow ? Math.min(44, H*.12) : Math.min(96, len*.115)};
+    proteins.forEach(function(pt){ var a = axisPoint(pt.u); pt.x = a.x + geo.nx*geo.R*pt.off; pt.y = a.y + geo.ny*geo.R*pt.off; });
+    draw(performance.now());
+  }
+
+  function recount(){
+    variants = 0;
+    for(var i=0;i<N;i++) if(pairs[i].base !== pairs[i].orig) variants++;
+    countEl.textContent = variants;
+  }
+  function mutate(i, now){
+    var pr = pairs[i], from = pr.base;
+    pr.base = Math.random() < 2/3 ? TRANSITION[from] : TRANSVERSION[from][(Math.random()*2)|0];
+    pr.flash = 1; pr.heat = 1; pr.label = from + pr.pos + pr.base; pr.labelLife = 1;
+    lastMutation = now;
+    recount();
+  }
+  function nearestPair(x, y){
+    var best = -1, bd = 1e9;
+    for(var i=0;i<N;i++){ var a = axisPoint(i/(N-1)), d = Math.hypot(a.x-x, a.y-y); if(d < bd){ bd = d; best = i; } }
+    return {i:best, d:bd};
+  }
+
+  function step(now, dt){
+    var f60 = dt/16.7;
+    if(pointer.inside){
+      var speed = Math.hypot(pointer.vx, pointer.vy), reach = geo.R*1.6;
+      for(var i=0;i<N;i++){
+        var a = axisPoint(i/(N-1)), d = Math.hypot(a.x-pointer.x, a.y-pointer.y);
+        if(d < reach){
+          var h = 1 - d/reach;
+          pairs[i].heat = Math.max(pairs[i].heat, h);
+          if(h > .55 && speed > 2.2 && now - lastMutation > 140 && Math.random() < .35) mutate(i, now);
+        }
+      }
+    }
+    for(var j=0;j<N;j++){
+      var pr = pairs[j];
+      pr.heat *= Math.pow(.92, f60);
+      pr.flash *= Math.pow(.95, f60);
+      pr.labelLife = Math.max(0, pr.labelLife - dt/2600);
+    }
+    if(enzyme){
+      enzyme.u = Math.min(1, enzyme.u + (reduce ? 1 : dt/4200));
+      var idx = Math.round(enzyme.u*(N-1)), changed = false;
+      for(var q=0; q<=idx; q++){
+        if(q >= idx-1) pairs[q].heat = Math.max(pairs[q].heat, .9);
+        if(pairs[q].base !== pairs[q].orig){ pairs[q].base = pairs[q].orig; pairs[q].flash = .6; pairs[q].label = null; changed = true; }
+      }
+      if(changed) recount();
+      if(enzyme.u >= 1) enzyme = null;
+    }
+    var mutated = [];
+    for(var m=0;m<N;m++) if(pairs[m].base !== pairs[m].orig) mutated.push(m);
+    proteins.forEach(function(pt, n){
+      pt.ph += dt/1000;
+      var target;
+      if(mutated.length){
+        var pick = mutated[(n*7) % mutated.length], a = axisPoint(pick/(N-1)), side = n % 2 ? 1 : -1;
+        target = {x: a.x + geo.nx*geo.R*1.45*side, y: a.y + geo.ny*geo.R*1.45*side};
+        pt.dock = pick;
+      } else {
+        var c = axisPoint(pt.u + (reduce ? 0 : Math.sin(pt.ph*.25)*.04));
+        target = {x: c.x + geo.nx*geo.R*pt.off, y: c.y + geo.ny*geo.R*pt.off};
+        pt.dock = -1;
+      }
+      if(pointer.inside){
+        var dx = pt.x - pointer.x, dy = pt.y - pointer.y, dd = Math.hypot(dx,dy) || 1;
+        if(dd < 70){ target = {x: target.x + dx/dd*40, y: target.y + dy/dd*40}; }
+      }
+      var ease = reduce ? 1 : 1 - Math.pow(.96, f60);
+      pt.x += (target.x - pt.x)*ease; pt.y += (target.y - pt.y)*ease;
+    });
+    pointer.vx *= .85; pointer.vy *= .85;
+  }
+
+  function dot(list, x, y, z, r, c, o, ring){ list.push({x:x, y:y, z:z, r:r, c:c, o:o, ring:ring}); }
+
+  function draw(now){
+    if(!geo) return;
+    var dt = Math.min(64, now - last); last = now;
+    step(now, dt);
+    var time = reduce ? 0 : (now - t0)/1000;
+    ctx.clearRect(0,0,W,H);
+    var dots = [];
+
+    ambient.forEach(function(a){
+      var c = axisPoint(a.u), off = a.v*geo.R*3.2 + (reduce ? 0 : Math.sin(time*a.s + a.ph)*6);
+      var x = c.x + geo.nx*off, y = c.y + geo.ny*off;
+      if(pointer.inside){
+        var dx = x-pointer.x, dy = y-pointer.y, d = Math.hypot(dx,dy) || 1;
+        if(d < 90){ var f = 1-d/90; a.dx += dx/d*f*1.4; a.dy += dy/d*f*1.4; }
+      }
+      a.dx *= .9; a.dy *= .9;
+      dot(dots, x+a.dx, y+a.dy, -1.2, a.r, '#8fa8ff', .35);
+    });
+
+    var pts = [];
+    for(var i=0;i<N;i++){
+      var pr = pairs[i], c = axisPoint(i/(N-1));
+      var th = i*TWIST + time*.55, R = geo.R*(1 + pr.heat*.75);
+      var A = {x: c.x + geo.nx*R*Math.cos(th) + pr.jit[0], y: c.y + geo.ny*R*Math.cos(th) + pr.jit[1], z: Math.sin(th)};
+      var B = {x: c.x + geo.nx*R*Math.cos(th+GROOVE) + pr.jit[2], y: c.y + geo.ny*R*Math.cos(th+GROOVE) + pr.jit[3], z: Math.sin(th+GROOVE)};
+      if(pointer.inside){
+        [A,B].forEach(function(P){
+          var dx = P.x-pointer.x, dy = P.y-pointer.y, d = Math.hypot(dx,dy);
+          if(d < 60 && d > 0){ var f = (1-d/60)*14; P.x += dx/d*f; P.y += dy/d*f; }
+        });
+      }
+      pts.push({A:A, B:B, th:th, R:R, c:c});
+      dot(dots, A.x, A.y, A.z, 2.2+(A.z+1)*1.3, '#0d1526', .35+(A.z+1)*.3);
+      dot(dots, B.x, B.y, B.z, 2.2+(B.z+1)*1.3, '#0d1526', .35+(B.z+1)*.3);
+
+      var mut = pr.base !== pr.orig, colA = COLOR[pr.base], colB = COLOR[PAIR[pr.base]], broken = pr.heat > .5;
+      for(var s=1;s<6;s++){
+        var g = s/6;
+        if(broken && g > .34 && g < .66) continue;             // hydrogen bonds break while the pair is open
+        var zr = A.z + (B.z-A.z)*g, left = g < .5;
+        dot(dots, A.x+(B.x-A.x)*g, A.y+(B.y-A.y)*g, zr, 1.7+(zr+1)*.9 + (mut && left ? .8 : 0),
+            pr.flash > .15 ? MUT : (left ? colA : colB), .55+(zr+1)*.2, mut && left);
+      }
+      pr.lx = (A.x+B.x)/2; pr.ly = (A.y+B.y)/2;
+    }
+    for(var j=0;j<N-1;j++){                                    // backbone dots between neighbours
+      var p = pts[j], q = pts[j+1];
+      for(var s2=1;s2<3;s2++){
+        var f2 = s2/3, thm = p.th + (q.th-p.th)*f2, Rm = p.R + (q.R-p.R)*f2;
+        var cx = p.c.x + (q.c.x-p.c.x)*f2, cy = p.c.y + (q.c.y-p.c.y)*f2;
+        var za = Math.sin(thm), zb = Math.sin(thm+GROOVE);
+        dot(dots, cx+geo.nx*Rm*Math.cos(thm), cy+geo.ny*Rm*Math.cos(thm), za, 1.2+(za+1)*.8, '#0d1526', .22+(za+1)*.22);
+        dot(dots, cx+geo.nx*Rm*Math.cos(thm+GROOVE), cy+geo.ny*Rm*Math.cos(thm+GROOVE), zb, 1.2+(zb+1)*.8, '#0d1526', .22+(zb+1)*.22);
+      }
+    }
+
+    dots.sort(function(a,b){ return a.z-b.z; });
+    for(var n=0;n<dots.length;n++){
+      var d = dots[n];
+      ctx.globalAlpha = Math.max(0, Math.min(1, d.o));
+      ctx.fillStyle = d.c;
+      ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, 6.2832); ctx.fill();
+      if(d.ring){ ctx.globalAlpha = .9; ctx.strokeStyle = MUT; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.arc(d.x, d.y, d.r+2.2, 0, 6.2832); ctx.stroke(); }
+    }
+
+    proteins.forEach(function(pt){
+      var docked = pt.dock >= 0;
+      ctx.fillStyle = docked ? MUT : '#2143d6';
+      for(var k=0;k<7;k++){
+        var ang = k/7*6.2832 + pt.ph*.6, rr = 7 + Math.sin(pt.ph*2 + k)*1.5;
+        ctx.globalAlpha = docked ? .55 : .35;
+        ctx.beginPath(); ctx.arc(pt.x + Math.cos(ang)*rr, pt.y + Math.sin(ang)*rr, 3.2, 0, 6.2832); ctx.fill();
+      }
+      ctx.globalAlpha = docked ? .9 : .6;
+      ctx.beginPath(); ctx.arc(pt.x, pt.y, 4, 0, 6.2832); ctx.fill();
+    });
+
+    ctx.font = '500 11px "IBM Plex Mono", monospace';
+    if(enzyme){
+      var e = axisPoint(enzyme.u), er = geo.R*1.25;
+      ctx.globalAlpha = .12; ctx.fillStyle = ENZYME; ctx.beginPath(); ctx.arc(e.x, e.y, er, 0, 6.2832); ctx.fill();
+      ctx.globalAlpha = .9; ctx.strokeStyle = ENZYME; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(e.x, e.y, er, 0, 6.2832); ctx.stroke();
+      ctx.globalAlpha = 1; ctx.fillText('proofreading', Math.min(W-90, e.x + er*1.05), Math.max(14, e.y - er));
+    }
+    for(var v=0;v<N;v++){
+      var pl = pairs[v];
+      if(!pl.label || pl.labelLife <= 0 || pl.lx == null) continue;
+      ctx.globalAlpha = Math.min(1, pl.labelLife*1.6);
+      var tx = Math.min(W-80, pl.lx + 10), ty = Math.max(16, pl.ly - 14 - (1-pl.labelLife)*16), tw = ctx.measureText(pl.label).width;
+      ctx.fillStyle = 'rgba(255,255,255,.9)'; ctx.fillRect(tx-4, ty-11, tw+8, 16);
+      ctx.fillStyle = '#c93a17'; ctx.fillText(pl.label, tx, ty);
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function loop(now){
+    if(visible && !document.hidden) draw(now); else last = now;
+    requestAnimationFrame(loop);
+  }
+
+  function toLocal(ev){ var r = canvas.getBoundingClientRect(); return {x: ev.clientX - r.left, y: ev.clientY - r.top}; }
+  canvas.addEventListener('pointermove', function(ev){
+    var p = toLocal(ev);
+    if(pointer.inside){ pointer.vx = p.x - pointer.x; pointer.vy = p.y - pointer.y; }
+    pointer.x = p.x; pointer.y = p.y; pointer.inside = true;
+    if(hint.style.opacity !== '0' && Math.hypot(pointer.vx, pointer.vy) > 2){ hint.style.transition = 'opacity .6s'; hint.style.opacity = '0'; }
+  });
+  canvas.addEventListener('pointerleave', function(){ pointer.inside = false; pointer.x = pointer.y = -9999; });
+  canvas.addEventListener('pointerdown', function(ev){
+    var p = toLocal(ev), hit = nearestPair(p.x, p.y);
+    if(hit.i >= 0 && hit.d < geo.R*1.8) mutate(hit.i, performance.now());
+    else if(!enzyme) enzyme = {u:0};
+  });
+  document.getElementById('btnMutate').addEventListener('click', function(){
+    var free = [];
+    for(var i=0;i<N;i++) if(pairs[i].base === pairs[i].orig) free.push(i);
+    if(free.length) mutate(free[(Math.random()*free.length)|0], performance.now());
+  });
+  document.getElementById('btnRepair').addEventListener('click', function(){ if(!enzyme) enzyme = {u:0}; });
+
+  if('ResizeObserver' in window) new ResizeObserver(resize).observe(wrap); else window.addEventListener('resize', resize);
+  if('IntersectionObserver' in window) new IntersectionObserver(function(es){ visible = es[0].isIntersecting; }).observe(canvas);
+  resize();
+  requestAnimationFrame(loop);
+})();
+</script>
