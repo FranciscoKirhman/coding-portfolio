@@ -14,15 +14,17 @@ A personal portfolio for **Medical Science Liaison (MSL) and Medical Affairs** r
 
 | Path | Role | Deployed |
 |---|---|---|
-| `docs/index.html` | The portfolio. One self-contained file: HTML, CSS and the helix script inline. | Yes |
-| `docs/portrait.jpg` | Portrait, 640×800 JPEG. | Yes |
-| `docs/Francisco_Kirhman_MSL_CV.pdf` | The MSL CV linked from the page. | Yes |
+| `docs/index.html` | The portfolio. One self-contained file: HTML, CSS, JSON-LD and the interactive scripts inline. | Yes |
+| `docs/portrait.jpg` | Portrait, 800×800 JPEG; also the social preview image. | Yes |
+| `docs/Francisco_Kirhman_MSL_CV.pdf` | Public web copy of the MSL CV. Identical to the application CV except that the phone number is removed. | Yes |
+| `docs/kol-preview.json` | Anonymized KOL Radar network (types, degrees, positions, sample totals; no names). | Yes |
 | `docs/job-tracker/` | Public copy of a job application tracker, opened with fictional demo data. | Yes |
 | `docs/training-dashboard/` | Public copy of a strength-training dashboard, opened with a fictional demo athlete. | Yes |
-| `scripts/build_public_tools.py` | Generates the two `docs/` tools from private source repositories: empties every data block, removes private integrations and fails if any term from the source data survives. | No (run locally) |
+| `scripts/build_public_tools.py` | Generates the two `docs/` tools from private source repositories: empties every data block, removes private integrations and fails if any string value from the source data survives, or if an expected replacement no longer matches. | No (run locally) |
+| `scripts/build_kol_preview.py` | Generates `docs/kol-preview.json` from the public KOL Radar sample and fails if any entity name appears in the output. | No (run locally) |
 | `scripts/demo_data.py` | The fictional demo records for both tools. Every company name ends in "(demo)". | No |
-| `app/`, `components/`, `hooks/`, `lib/`, `public/`, `package.json`, `vite.config.ts`, `next.config.ts` | An earlier Next.js (vinext) version of the site. **Not deployed and not used by Pages.** | No |
-| `design-options/` | Local design drafts (untracked). | No |
+| `README.md`, `AUDIT_BRIEF.md` | Repository documentation. | No |
+| branch `legacy-nextjs` | The earlier Next.js (vinext) version of the site, removed from `main`. | No |
 
 ## 3. The portfolio page (`docs/index.html`)
 
@@ -30,15 +32,16 @@ Approximate line map (it drifts with edits):
 
 | Lines | Part |
 |---|---|
-| 12–170 | CSS. A deliberate light-only theme with explicit colors (see §5). |
-| 173–195 | Hero: headline, lede, CTAs, the helix `<canvas>` and its legend and buttons. |
-| 197–211 | About: a single column with a circular portrait. |
-| 213–289 | Publications: three peer-reviewed articles, each with date, peer-review badge, journal, authors (Francisco in bold), plain-language summary, tags, DOI and an SVG illustration. |
-| 291–302 | Experience: five roles. |
-| 304–338 | Tools: KOL Radar, BiopREL, application tracker, training dashboard. |
-| 340–372 | Credentials: education, clinical research certifications, languages. |
-| 374–380 | Footer and contact. |
-| 382–end | Helix script (Canvas 2D, no libraries). |
+| 5–73 | Canonical URL, Open Graph, Twitter card and JSON-LD (`Person` plus three `ScholarlyArticle`). |
+| 75–291 | CSS. A deliberate light-only theme with explicit colors (see §5). |
+| 310–338 | Hero: headline, quantified lede, CTAs, the helix `<canvas>`, the mutation panel (`#onco`) and the base key. |
+| 340–357 | About: text column and a large portrait (a small circle on mobile). |
+| 359–370 | Experience: five roles. |
+| 372–431 | Publications: date, peer-review badge, journal, authors, plain-language summary, tags, DOI and an interactive illustration per article. |
+| 433–464 | Credentials: education, clinical research certifications, languages. |
+| 466–531 | Tools: KOL Radar feature (copy, sample counts, network preview), BiopREL, and a collapsed "Other builds" with the two utilities. |
+| 534–540 | Footer and contact. |
+| 542–end | Scripts: shared `animator` helper, helix (≈572), sequencing depth (≈838), hydrogel press (≈894), membrane vesicles (≈948), KOL Radar network (≈1001). |
 
 ### Visual references (chosen by Francisco)
 - **Arc Institute** (arcinstitute.org): white ground, blue serif headline, a DNA helix made of dots as the only hero visual.
@@ -46,11 +49,22 @@ Approximate line map (it drifts with edits):
 - **Ana Rebeka Kamšek** (kamsekar.github.io): a sober single column, a circular portrait and plain-language publication summaries.
 
 ### The interactive helix
-- The model is a double helix with 46 base pairs and 10.5 bp per turn. The two strands are offset by 0.78π to suggest major and minor grooves. Depth is shown through dot size and opacity, and dots are depth-sorted every frame.
-- **Pointer over the helix:** nearby base pairs "heat up". The strands open and the hydrogen-bond rungs break. A fast pass mutates hot pairs, with transitions (A↔G, C↔T) at twice the probability of transversions. Each variant shows a label in genome-position notation (for example `A23403G`) and increments the "Variants" counter. The counter uses `aria-live`.
-- **Click on the helix:** mutates the nearest pair. Clicking elsewhere, or the **Proofread** button, sends an enzyme along the axis that restores original bases. **Add a variant** is the keyboard and touch equivalent.
-- **Binding proteins:** they drift, and dock beside existing variants.
-- **Performance and accessibility:** the canvas scales to devicePixelRatio (capped at 2), redraws through ResizeObserver, pauses when offscreen (IntersectionObserver) or when the tab is hidden, and freezes all motion under `prefers-reduced-motion: reduce`.
+- The model is a double helix with 44 base pairs and 10.5 bp per turn. The two strands are offset by 0.78π to suggest major and minor grooves. Depth is shown through dot size and opacity, and dots come from a reused object pool and are depth-sorted each frame.
+- Each base pair is seeded with the reference base of one of 11 documented somatic hotspots, with the coding change in HGVS c. notation: KRAS G12D and G12C, BRAF V600E, EGFR L858R and T790M, TP53 R175H, PIK3CA H1047R, IDH1 R132H, JAK2 V617F, ESR1 Y537S and KIT D816V.
+- **Hover (mouse or pen), tap (touch, under 8 px of movement) or Enter on the focused canvas** introduces one hotspot on **one strand only**. The opposite strand keeps the original complement, so the pair becomes a mismatch with broken hydrogen bonds. At most two mismatches exist at once, and hover mutations are at least 1.4 s apart.
+- The `#onco` panel (`aria-live`) names the gene and protein change, the c. change, what the mutation does, where it is seen, and approved targeted therapy where one exists. These statements need medical accuracy review.
+- **No controls.** After 1.6 s, an idle MSH2–MSH6 protein seeks the mismatch, works for 1.8 s and restores the original base. The panel then explains that a failed repair becomes permanent in dividing cells. The page introduces one example by itself after 2.6 s without interaction.
+- Base identity is lettered next to open or mutated pairs, so it never depends on color alone.
+- **Performance:** idle frames are capped near 30 fps, and animation stops when the canvas is offscreen or the tab is hidden. With `prefers-reduced-motion: reduce` there is no rotation or drift, and frames render only while a mismatch is pending.
+
+### Publication illustrations (not data from the papers)
+- **Sequencing depth:** a log slider from 10× to 10,000× samples 40 positions. One position carries an assumed 2% variant and all positions carry an assumed 0.5% error rate. A 3-SD noise band shows when the variant becomes distinguishable. Hovering a bar reads its counts.
+- **Hydrogel press:** a slider sets the porcine gelatin fraction. Stiffness rises and swelling falls with it, following the reported qualitative trend; the page shows no numeric moduli. Hovering or dragging down presses the gel.
+- **Membrane vesicles:** hovering or tapping releases vesicles, some linked in chains, as the abstract describes. It is animated only while hovered on devices with hover.
+
+### KOL Radar feature
+- The statistics are the totals of the public sample (`docs/kol-preview.json`, sample dated 10 Sep 2026): 77 specialists, 61 institutions, 579 clinical trials with a site in Chile, and 1,198 sourced links.
+- The network shows the 150 most connected entities with a force-directed layout computed offline. Hovering a node shows its type and link count, and the type filters are toggle buttons with `aria-pressed`.
 
 ## 4. Source of truth for every claim
 
@@ -72,9 +86,12 @@ Do not suggest adding experience, metrics, therapeutic areas or credentials that
 2. **Light-only theme** that mirrors a journal page. Colors are explicit, and there is no dark mode on purpose.
 3. **English page** for regional and global Medical Affairs audiences. A Spanish version is an open question, not an oversight.
 4. **Fonts** come from Google Fonts: Newsreader, Public Sans and IBM Plex Mono, with system fallbacks.
-5. **SVG publication illustrations** are schematic motifs, not figures from the papers. Each has an `aria-label` that says "Illustration".
+5. **Publication illustrations** are interactive, schematic and use assumed or qualitative values, not figures or data from the papers. Each caption says so.
 6. **Tools are public with fictional data.** The tracker and dashboard are shared as reusable utilities, and every demo record is marked as demo in the UI.
-7. **KOL Radar** is linked as a beta that organizes public research signals about Chilean specialists; its own disclaimer says it is not KOL designation. How a pharma Medical Affairs or compliance reader perceives a public tool of this kind is a legitimate audit question.
+7. **KOL Radar is the featured project**, by Francisco's choice. It is a beta that organizes public research signals about Chilean specialists; its own disclaimer says it is not KOL designation. The preview on this page is anonymized. How a pharma Medical Affairs or compliance reader perceives a public tool of this kind is a legitimate audit question.
+8. **The helix runs without controls.** Repair is automatic, and there is one unprompted example.
+9. **Section order:** About, Experience, Publications, Credentials, Tools.
+10. **DiGenoma dates:** the role ran April 2024 to January 2025, so "2024–2025" is correct on the page. The canonical record carries the month-level dates.
 
 ## 6. What to audit
 
@@ -83,26 +100,26 @@ Rank findings by impact on the page's one job (§1).
 1. **Claim accuracy:** every sentence against the CV and the DOIs (§4). Check dates, author positions, journal names and the degree title.
 2. **MSL hiring effectiveness:** what a Medical Affairs director learns in 30 seconds, what is missing or buried, whether publications and medical education are framed for that reader, and whether anything reads as a gap confession or as overclaiming.
 3. **Accessibility (WCAG 2.2 AA):**
-   - Contrast of every text and color pair, including mono labels on `#eef2fe` and the coral `#c93a17` counter.
+   - Contrast of every text and color pair, including mono labels on `#eef2fe`, the base colors A `#2143d6`, T `#0b7a53`, G `#8a3fc7` and C `#0d1526`, and the mutation color `#d23a1b`.
    - Keyboard access to all controls and a visible focus indicator.
    - Heading order and landmarks.
-   - The canvas alternative: are the buttons, `aria-label` and `aria-live` enough?
+   - The canvas alternatives: the helix `aria-label`, the `#onco` live panel and Enter to mutate; the slider labels and live readouts; the KOL Radar filter buttons.
    - Reduced motion and target sizes.
-4. **Helix code quality (lines 382–end):**
-   - Correctness: listener cleanup, `ResizeObserver` feedback loops, and division by zero when the pointer sits exactly on a dot.
-   - Performance: allocations per frame (the dots array is rebuilt and sorted each frame, about 600 items), behavior on low-end phones, battery use while idle, and whether `IntersectionObserver` actually stops work.
-   - Touch: `touch-action: pan-y` and scroll conflicts.
-   - Clarity: whether the scientific metaphor is accurate enough not to embarrass a molecular biologist.
+4. **Interactive code quality (lines 542–end):**
+   - Correctness: the mismatch and repair state machine, protein assignment, `ResizeObserver` feedback loops and division by zero.
+   - Performance: work per frame, behavior on low-end phones, battery use while idle, and whether the `animator` truly stops offscreen.
+   - Touch: tap versus scroll on the helix and on the sliders and canvases.
+   - **Medical and scientific accuracy:** every hotspot statement in the `HOT` array (c. notation, mechanism, tumor types, therapies), and whether the illustrations stay honest about assumed values.
 5. **Responsive layout:** 320, 375, 768, 1024 and 1440 px widths. Check for horizontal overflow, the hero stacking order, whether the legend fits, and portrait cropping.
 6. **Performance and SEO:**
    - Page weight and render-blocking font CSS.
-   - Missing Open Graph and Twitter meta tags, canonical URL and structured data (`Person`, `ScholarlyArticle`).
+   - Validity of the Open Graph and Twitter tags, the canonical URL and the JSON-LD (`Person`, `ScholarlyArticle`).
    - Whether `<title>` and `description` fit recruiter searches.
 7. **Privacy and security of what is public:**
-   - The CV PDF contains a phone number. Is that acceptable on a public site?
+   - The public CV copy must not contain a phone number.
    - External links use `rel="noopener"`.
-   - The two tool copies must contain no real personal data. Review `scripts/build_public_tools.py` for gaps in its leak check: it compares output against company names, job IDs, folder paths and CV file names from the source data, plus fixed personal terms.
-8. **Repository hygiene:** the unused Next.js scaffold at the root (§2), whether anything should be deleted, the README, and whether the Pages source setting is documented.
+   - The two tool copies and `kol-preview.json` must contain no real personal data. Review `scripts/build_public_tools.py` and `scripts/build_kol_preview.py` for gaps in their leak checks.
+8. **Repository hygiene:** the README, `.gitignore`, the homepage field, and whether anything else should move to `legacy-nextjs`.
 
 ## 7. How to report
 
