@@ -14,6 +14,9 @@ el script falla y no escribe nada.
 """
 import argparse, json, os, re, shutil, subprocess, sys, tempfile
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import demo_data
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DOCS = os.path.join(ROOT, "docs")
 
@@ -134,7 +137,9 @@ def build_tracker(repo):
     s = src
 
     s = re.sub(r"// TRACKER_DATA_START[\s\S]*?// TRACKER_DATA_END",
-               "// TRACKER_DATA_START\nconst SAVED_DATA = [];\n// TRACKER_DATA_END", s, count=1)
+               "// TRACKER_DATA_START\nconst SAVED_DATA = [];\n// TRACKER_DATA_END\n"
+               + "const DEMO_JOBS = " + json.dumps(demo_data.tracker_jobs(), ensure_ascii=False).replace("\\", "\\\\")
+               + ";" + demo_data.TRACKER_JS.replace("\\", "\\\\"), s, count=1)
     s = re.sub(r"// DISCARDED_START[\s\S]*?// DISCARDED_END",
                "// DISCARDED_START\nconst DISCARDED_POSTINGS = [];\n// DISCARDED_END", s, count=1)
     s = re.sub(r"// LAST_LOCAL_SYNC_START[\s\S]*?// LAST_LOCAL_SYNC_END",
@@ -190,6 +195,16 @@ def build_tracker(repo):
     s = s.replace('placeholder="e.g. Roche"', 'placeholder="e.g. Acme Pharma"')
     s = s.replace('placeholder="e.g. CL_Roche_MedicalLead.pdf"', 'placeholder="e.g. CL_Acme_MedicalLead.pdf"')
 
+    # demo: sin datos propios ni borrador en el navegador, se cargan los registros ficticios
+    for a, b in [("const embedded=parseStored(SAVED_DATA);",
+                  "const embedded=parseStored(SAVED_DATA.length?SAVED_DATA:(localStorage.getItem(SK)===null?demoJobs():[]));"),
+                 ('<div class="hdr">', demo_data.TRACKER_BANNER + '<div class="hdr">'),
+                 ("</body></html>", demo_data.TRACKER_TAIL + "</body></html>")]:
+        if s.count(a) != 1:
+            fail(f"tracker demo: se esperaba 1 aparicion de {a[:50]!r}")
+        s = s.replace(a, b)
+    s = s.replace("</style>", demo_data.TRACKER_BANNER_CSS + "</style>", 1)
+
     out_dir = os.path.join(DOCS, "job-tracker")
     os.makedirs(os.path.join(out_dir, "tracker-assets"), exist_ok=True)
     # canonicalCompanyName normaliza grafias de empresas conocidas; es codigo, no un registro
@@ -239,11 +254,6 @@ LOADER_JS = """
   })();
 """
 
-EMPTY_PROFILE = {"perfil": {"displayName": "tu perfil", "chips": [], "hasData": False, "MUSCLES": [],
-                            "WEEKDAYS": [], "CHARTS": [], "SESSIONS_FULL": [], "cycle": None,
-                            "fuente": "profiles.json", "weekNote": "", "weekTodo": ""}}
-
-
 def build_dashboard(repo):
     src = os.path.join(repo, "src")
     tpl = open(os.path.join(src, "dashboard.template.html"), encoding="utf-8").read()
@@ -257,9 +267,14 @@ def build_dashboard(repo):
 
     profiles_js = ("(function(){ try{ var u = JSON.parse(localStorage.getItem(CLAVE_PERFILES) || 'null');"
                    " if(u && typeof u === 'object' && !Array.isArray(u) && Object.keys(u).length) return u; }catch(e){}"
-                   " return " + json.dumps(EMPTY_PROFILE, ensure_ascii=False) + "; })()")
+                   " ES_DEMO = true; return moverDemo(" + json.dumps(demo_data.dashboard_profile(), ensure_ascii=False) + "); })()")
     edits = [
-        ("var PROFILES = __PROFILES_JSON__;", "var CLAVE_PERFILES = 'tablero_perfiles_v1';\n  var PROFILES = " + profiles_js + ";"),
+        ("var PROFILES = __PROFILES_JSON__;", "var CLAVE_PERFILES = 'tablero_perfiles_v1', ES_DEMO = false;"
+         + demo_data.DASHBOARD_SHIFT_JS.replace("__DEMO_MONDAY__", demo_data.demo_monday())
+         + "\n  var PROFILES = " + profiles_js + ";\n  if(!ES_DEMO){ var av = document.getElementById('demoAviso'); if(av) av.style.display = 'none'; }"),
+        ('<p class="eyebrow">Coach adaptativo · basado en registro Hevy</p>',
+         '<p class="demo-aviso" id="demoAviso"><b>DEMO</b> Datos ficticios de una persona que no existe. Carga tu profiles.json para ver los tuyos.</p>\n      '
+         '<p class="eyebrow">Coach adaptativo · basado en registro Hevy</p>'),
         ("var BODY_GENERO = {mopo:'male', mipi:'female'};",
          "var BODY_GENERO = {}; Object.keys(PROFILES).forEach(function(k){ BODY_GENERO[k] = PROFILES[k].bodyType === 'female' ? 'female' : 'male'; });"),
         ("renderProfile('mopo');", "renderProfile(Object.keys(PROFILES)[0]);" + LOADER_JS),
@@ -278,7 +293,10 @@ def build_dashboard(repo):
     tpl = re.sub(r"\n  // -{16} ¿estoy viendo una copia vieja\? -{16}[\s\S]*?\n  if\('serviceWorker' in navigator\)\{[\s\S]*?\n  \}\n",
                  "\n  var VERSION = 'publica';\n", tpl, count=1)
     tpl = tpl.replace("</style>", ".cargador{display:flex;gap:8px;align-items:center;flex-wrap:wrap}"
-                                   ".cargador-ayuda{font-size:.8rem;color:inherit;opacity:.75}</style>", 1)
+                                   ".cargador-ayuda{font-size:.8rem;color:inherit;opacity:.75}"
+                                   ".demo-aviso{display:inline-flex;gap:.6rem;align-items:baseline;margin:0 0 .8rem;padding:.35rem .7rem;"
+                                   "border:1px solid currentColor;border-radius:999px;font-size:.8rem;opacity:.9}"
+                                   ".demo-aviso b{letter-spacing:.12em}</style>", 1)
     if "{{" in tpl or "__PROFILES_JSON__" in tpl or "__BODYPATHS_JSON__" in tpl or "serviceWorker" in tpl:
         fail("dashboard: quedaron marcadores o service worker")
 

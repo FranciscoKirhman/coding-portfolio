@@ -1,6 +1,6 @@
 # Training dashboard
 
-Public copy of the dashboard, with no personal data. Open `index.html`, press **Cargar profiles.json** and pick your file. The data is saved only in that browser (`localStorage`); **Quitar mis datos** deletes it.
+Public copy of the dashboard. It opens with a **fictional demo athlete**; nothing in it belongs to a real person. Press **Cargar profiles.json** and pick your file. The data is saved only in that browser (`localStorage`); **Quitar mis datos** deletes it.
 
 ## Formato
 
