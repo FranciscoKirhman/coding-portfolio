@@ -89,6 +89,36 @@ def empty_element(s, el_id):
     fail("sin cierre para #" + el_id)
 
 
+def string_leaves(value, out, min_len=12):
+    """Every non-trivial string value inside a JSON value, whitespace-normalised. Keys are schema, not data."""
+    if isinstance(value, dict):
+        for v in value.values():
+            string_leaves(v, out, min_len)
+    elif isinstance(value, list):
+        for v in value:
+            string_leaves(v, out, min_len)
+    elif isinstance(value, str):
+        t = " ".join(value.split())
+        if len(t) >= min_len:
+            out.add(t[:60])
+    return out
+
+
+def quoted_strings(js_literal, min_len=12):
+    """String literals inside a JS object literal that is not valid JSON."""
+    out = set()
+    for m in re.finditer(r"'((?:[^'\\]|\\.)*)'|\"((?:[^\"\\]|\\.)*)\"", js_literal):
+        t = " ".join((m.group(1) or m.group(2) or "").split())
+        if len(t) >= min_len:
+            out.add(t[:60])
+    return out
+
+
+def generic_strings(texts, candidates):
+    """Candidates that already exist in non-data text (the app shell, the demo data) are not personal."""
+    return {c for c in candidates if any(c in t for t in texts)}
+
+
 def leak_terms_from_tracker(src):
     terms = set()
     for name in ("SAVED_DATA", "MARKET_HISTORY", "DISCARDED_POSTINGS", "NEW_JOB_RECOMMENDATIONS",
@@ -108,6 +138,24 @@ def leak_terms_from_tracker(src):
     if secret:
         terms.add(secret)
     return terms
+
+
+def all_tracker_strings(src):
+    """Every string leaf of every data block in the source tracker, plus the shell with those blocks removed."""
+    names = ["SAVED_DATA", "DISCARDED_POSTINGS", "LAST_LOCAL_SYNC_AT", "MAIL_AUDIT", "CHILE_MONITOR_SUMMARY"] + TRACKER_ARRAYS
+    spans, found = [], set()
+    for name in names:
+        _, a, b = const_span(src, name)
+        spans.append((a, b))
+        chunk = src[a:b]
+        try:
+            string_leaves(json.loads(chunk), found)
+        except json.JSONDecodeError:
+            found |= quoted_strings(chunk)
+    shell = src
+    for a, b in sorted(spans, reverse=True):
+        shell = shell[:a] + shell[b:]
+    return found, shell
 
 
 # ---------------------------------------------------------------- tracker
@@ -168,6 +216,8 @@ def build_tracker(repo):
         "La búsqueda parte del Master CV": "La búsqueda parte de tu CV maestro",
     }
     for a, b in replacements.items():
+        if a not in s:
+            fail(f"tracker: la sustitucion {a[:50]!r} ya no aparece en el origen")
         s = s.replace(a, b)
 
     # DOM pre-renderizado guardado dentro del archivo
@@ -212,6 +262,11 @@ def build_tracker(repo):
     scan = s[:m.start()] + s[literal_end(s, m.end() - 1):]
     check_leaks("job-tracker", scan, (leaks - GENERIC_WORDS) | {"franciscokirhman", "Francisco", "Kirhman",
                                                                "franckirhman", "ug.uchile", "6218 2752", "Johnson"})
+    every, shell = all_tracker_strings(src)
+    demo_text = json.dumps(demo_data.tracker_jobs(), ensure_ascii=False)
+    personal = every - generic_strings([shell, demo_text], every)
+    check_leaks("job-tracker (todas las cadenas)", scan, personal)
+    leaks |= personal
     open(os.path.join(out_dir, "index.html"), "w", encoding="utf-8").write(s)
     shutil.copyfile(os.path.join(repo, "tracker-assets", "chart.umd.js"),
                     os.path.join(out_dir, "tracker-assets", "chart.umd.js"))
@@ -301,16 +356,10 @@ def build_dashboard(repo):
         fail("dashboard: quedaron marcadores o service worker")
 
     profiles = json.load(open(os.path.join(src, "profiles.json"), encoding="utf-8"))
-    leaks = {"Mopo", "Mipi", "mopo", "mipi", "Paloma", "franciscokirhman"}
-    for p in profiles.values():
-        for ses in p.get("SESSIONS_FULL", [])[:400]:
-            for k in ("com", "title"):
-                v = ses.get(k)
-                if isinstance(v, str) and len(v) >= 25:
-                    leaks.add(v[:40])
-        for k in ("weekNote", "weekTodo", "note"):
-            if isinstance(p.get(k), str) and len(p[k]) >= 25:
-                leaks.add(p[k][:40])
+    template_src = open(os.path.join(src, "dashboard.template.html"), encoding="utf-8").read()
+    demo_text = json.dumps(demo_data.dashboard_profile(), ensure_ascii=False)
+    every = string_leaves(profiles, set())
+    leaks = (every - generic_strings([template_src, demo_text], every)) | {"Mopo", "Mipi", "mopo", "mipi", "Paloma", "franciscokirhman"}
     out_dir = os.path.join(DOCS, "training-dashboard")
     os.makedirs(out_dir, exist_ok=True)
     check_leaks("training-dashboard", tpl, leaks)
